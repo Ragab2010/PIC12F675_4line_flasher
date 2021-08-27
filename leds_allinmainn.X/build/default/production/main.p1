@@ -994,21 +994,6 @@ Version 3.2 HI-TECH Software Intermediate Code
  111 ]
 "234
 [e :U 111 ]
-[; ;main.c: 236: while(!(GPIO & (1<< 3))){
-"236
-[e $U 115  ]
-[e :U 116 ]
-{
-[; ;main.c: 237: GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));
-"237
-[e =| _GPIO -> | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-"238
-}
-[e :U 115 ]
-"236
-[e $ ! != & -> _GPIO `i << -> 1 `i -> 3 `i -> 0 `i 116  ]
-[e :U 117 ]
-[; ;main.c: 238: }
 [; ;main.c: 240: delay_val=GetADCValue(1<<0);
 "240
 [e = _delay_val -> ( _GetADCValue (1 -> << -> 1 `i -> 0 `i `uc `us ]
@@ -1039,67 +1024,52 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _count -> -> 5 `i `uc ]
 [; ;main.c: 248: while(count--){
 "248
-[e $U 118  ]
-[e :U 119 ]
+[e $U 115  ]
+[e :U 116 ]
 {
 [; ;main.c: 249: for(unsigned char i =1 ; i<6 ;i++){
 "249
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 121  ]
-[e $U 122  ]
-[e :U 121 ]
+[e $ < -> _i `i -> 6 `i 118  ]
+[e $U 119  ]
+[e :U 118 ]
 {
 [; ;main.c: 250: if(i ==3)
 "250
-[e $ ! == -> _i `i -> 3 `i 124  ]
+[e $ ! == -> _i `i -> 3 `i 121  ]
 [; ;main.c: 251: i=4;
 "251
 [e = _i -> -> 4 `i `uc ]
-[e :U 124 ]
+[e :U 121 ]
 [; ;main.c: 252: switch(flage){
 "252
-[e $U 126  ]
+[e $U 123  ]
 {
 [; ;main.c: 253: case 0: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO |=(1<<i); break;
 "253
-[e :U 127 ]
+[e :U 124 ]
 [e =& _GPIO -> ~ | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
 [e =| _GPIO -> << -> 1 `i _i `uc ]
-[e $U 125  ]
+[e $U 122  ]
 [; ;main.c: 254: case 1 : GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO &=~(1<<i); break;
 "254
-[e :U 128 ]
+[e :U 125 ]
 [e =| _GPIO -> | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
 [e =& _GPIO -> ~ << -> 1 `i _i `uc ]
-[e $U 125  ]
+[e $U 122  ]
 "255
 }
 [; ;main.c: 255: }
-[e $U 125  ]
+[e $U 122  ]
 "252
-[e :U 126 ]
-[e [\ _flage , $ -> -> 0 `i `uc 127
- , $ -> -> 1 `i `uc 128
- 125 ]
+[e :U 123 ]
+[e [\ _flage , $ -> -> 0 `i `uc 124
+ , $ -> -> 1 `i `uc 125
+ 122 ]
 "255
-[e :U 125 ]
-[; ;main.c: 257: while(!(GPIO & (1<< 3))){
-"257
-[e $U 129  ]
-[e :U 130 ]
-{
-[; ;main.c: 258: GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));
-"258
-[e =| _GPIO -> | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-"259
-}
-[e :U 129 ]
-"257
-[e $ ! != & -> _GPIO `i << -> 1 `i -> 3 `i -> 0 `i 130  ]
-[e :U 131 ]
-[; ;main.c: 259: }
+[e :U 122 ]
 [; ;main.c: 261: delay_val=GetADCValue(1<<0);
 "261
 [e = _delay_val -> ( _GetADCValue (1 -> << -> 1 `i -> 0 `i `uc `us ]
@@ -1110,8 +1080,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "249
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 121  ]
-[e :U 122 ]
+[e $ < -> _i `i -> 6 `i 118  ]
+[e :U 119 ]
 "264
 }
 [; ;main.c: 264: }
@@ -1120,10 +1090,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _GPIO -> ~ | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
 "267
 }
-[e :U 118 ]
+[e :U 115 ]
 "248
-[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 119  ]
-[e :U 120 ]
+[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 116  ]
+[e :U 117 ]
 [; ;main.c: 267: }
 [; ;main.c: 268: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));
 "268
@@ -1145,67 +1115,52 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _count -> -> 5 `i `uc ]
 [; ;main.c: 273: while(count--){
 "273
-[e $U 133  ]
-[e :U 134 ]
+[e $U 127  ]
+[e :U 128 ]
 {
 [; ;main.c: 274: for(unsigned char i =5 ; i>0 ;i--){
 "274
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 5 `i `uc ]
-[e $ > -> _i `i -> 0 `i 136  ]
-[e $U 137  ]
-[e :U 136 ]
+[e $ > -> _i `i -> 0 `i 130  ]
+[e $U 131  ]
+[e :U 130 ]
 {
 [; ;main.c: 275: if(i ==3)
 "275
-[e $ ! == -> _i `i -> 3 `i 139  ]
+[e $ ! == -> _i `i -> 3 `i 133  ]
 [; ;main.c: 276: i=2;
 "276
 [e = _i -> -> 2 `i `uc ]
-[e :U 139 ]
+[e :U 133 ]
 [; ;main.c: 277: switch(flage){
 "277
-[e $U 141  ]
+[e $U 135  ]
 {
 [; ;main.c: 278: case 0: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO |=(1<<i); break;
 "278
-[e :U 142 ]
+[e :U 136 ]
 [e =& _GPIO -> ~ | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
 [e =| _GPIO -> << -> 1 `i _i `uc ]
-[e $U 140  ]
+[e $U 134  ]
 [; ;main.c: 279: case 1 : GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO &=~(1<<i); break;
 "279
-[e :U 143 ]
+[e :U 137 ]
 [e =| _GPIO -> | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
 [e =& _GPIO -> ~ << -> 1 `i _i `uc ]
-[e $U 140  ]
+[e $U 134  ]
 "280
 }
 [; ;main.c: 280: }
-[e $U 140  ]
+[e $U 134  ]
 "277
-[e :U 141 ]
-[e [\ _flage , $ -> -> 0 `i `uc 142
- , $ -> -> 1 `i `uc 143
- 140 ]
+[e :U 135 ]
+[e [\ _flage , $ -> -> 0 `i `uc 136
+ , $ -> -> 1 `i `uc 137
+ 134 ]
 "280
-[e :U 140 ]
-[; ;main.c: 282: while(!(GPIO & (1<< 3))){
-"282
-[e $U 144  ]
-[e :U 145 ]
-{
-[; ;main.c: 283: GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));
-"283
-[e =| _GPIO -> | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-"284
-}
-[e :U 144 ]
-"282
-[e $ ! != & -> _GPIO `i << -> 1 `i -> 3 `i -> 0 `i 145  ]
-[e :U 146 ]
-[; ;main.c: 284: }
+[e :U 134 ]
 [; ;main.c: 286: delay_val=GetADCValue(1<<0);
 "286
 [e = _delay_val -> ( _GetADCValue (1 -> << -> 1 `i -> 0 `i `uc `us ]
@@ -1216,8 +1171,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "274
 [e -- _i -> -> 1 `i `uc ]
-[e $ > -> _i `i -> 0 `i 136  ]
-[e :U 137 ]
+[e $ > -> _i `i -> 0 `i 130  ]
+[e :U 131 ]
 "289
 }
 [; ;main.c: 289: }
@@ -1226,59 +1181,44 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 147  ]
-[e $U 148  ]
-[e :U 147 ]
+[e $ < -> _i `i -> 6 `i 138  ]
+[e $U 139  ]
+[e :U 138 ]
 {
 [; ;main.c: 293: if(i ==3)
 "293
-[e $ ! == -> _i `i -> 3 `i 150  ]
+[e $ ! == -> _i `i -> 3 `i 141  ]
 [; ;main.c: 294: i=4;
 "294
 [e = _i -> -> 4 `i `uc ]
-[e :U 150 ]
+[e :U 141 ]
 [; ;main.c: 295: switch(flage){
 "295
-[e $U 152  ]
+[e $U 143  ]
 {
 [; ;main.c: 296: case 0: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO |=(1<<i); break;
 "296
-[e :U 153 ]
+[e :U 144 ]
 [e =& _GPIO -> ~ | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
 [e =| _GPIO -> << -> 1 `i _i `uc ]
-[e $U 151  ]
+[e $U 142  ]
 [; ;main.c: 297: case 1 : GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO &=~(1<<i); break;
 "297
-[e :U 154 ]
+[e :U 145 ]
 [e =| _GPIO -> | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
 [e =& _GPIO -> ~ << -> 1 `i _i `uc ]
-[e $U 151  ]
+[e $U 142  ]
 "298
 }
 [; ;main.c: 298: }
-[e $U 151  ]
+[e $U 142  ]
 "295
-[e :U 152 ]
-[e [\ _flage , $ -> -> 0 `i `uc 153
- , $ -> -> 1 `i `uc 154
- 151 ]
+[e :U 143 ]
+[e [\ _flage , $ -> -> 0 `i `uc 144
+ , $ -> -> 1 `i `uc 145
+ 142 ]
 "298
-[e :U 151 ]
-[; ;main.c: 300: while(!(GPIO & (1<< 3))){
-"300
-[e $U 155  ]
-[e :U 156 ]
-{
-[; ;main.c: 301: GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));
-"301
-[e =| _GPIO -> | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-"302
-}
-[e :U 155 ]
-"300
-[e $ ! != & -> _GPIO `i << -> 1 `i -> 3 `i -> 0 `i 156  ]
-[e :U 157 ]
-[; ;main.c: 302: }
+[e :U 142 ]
 [; ;main.c: 304: delay_val=GetADCValue(1<<0);
 "304
 [e = _delay_val -> ( _GetADCValue (1 -> << -> 1 `i -> 0 `i `uc `us ]
@@ -1289,16 +1229,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "292
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 147  ]
-[e :U 148 ]
+[e $ < -> _i `i -> 6 `i 138  ]
+[e :U 139 ]
 "307
 }
 "310
 }
-[e :U 133 ]
+[e :U 127 ]
 "273
-[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 134  ]
-[e :U 135 ]
+[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 128  ]
+[e :U 129 ]
 [; ;main.c: 307: }
 [; ;main.c: 310: }
 [; ;main.c: 311: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));
@@ -1306,7 +1246,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _GPIO -> ~ | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
 [; ;main.c: 313: }
 "313
-[e :UE 132 ]
+[e :UE 126 ]
 }
 "314
 [v _togaleLeds `(v ~T0 @X0 1 ef2`uc`uc ]
@@ -1322,115 +1262,100 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _count -> -> 5 `i `uc ]
 [; ;main.c: 316: switch(fristTogaleOrNo){
 "316
-[e $U 160  ]
+[e $U 148  ]
 {
 [; ;main.c: 317: case 0 : GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1)) ; break;
 "317
-[e :U 161 ]
+[e :U 149 ]
 [e =& _GPIO -> ~ | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-[e $U 159  ]
+[e $U 147  ]
 [; ;main.c: 318: case 1 : GPIO ^=(1<<5); break;
 "318
-[e :U 162 ]
+[e :U 150 ]
 [e =^ _GPIO -> << -> 1 `i -> 5 `i `uc ]
-[e $U 159  ]
+[e $U 147  ]
 [; ;main.c: 319: case 2 : GPIO ^=(1<<4); break;
 "319
-[e :U 163 ]
+[e :U 151 ]
 [e =^ _GPIO -> << -> 1 `i -> 4 `i `uc ]
-[e $U 159  ]
+[e $U 147  ]
 [; ;main.c: 320: case 3 : GPIO ^=((1<<5)|(1<<4)); break;
 "320
-[e :U 164 ]
+[e :U 152 ]
 [e =^ _GPIO -> | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i `uc ]
-[e $U 159  ]
+[e $U 147  ]
 [; ;main.c: 321: case 4 : GPIO ^=((1<<5)|(1<<1)); break;
 "321
-[e :U 165 ]
+[e :U 153 ]
 [e =^ _GPIO -> | << -> 1 `i -> 5 `i << -> 1 `i -> 1 `i `uc ]
-[e $U 159  ]
+[e $U 147  ]
 "322
 }
 [; ;main.c: 322: }
-[e $U 159  ]
+[e $U 147  ]
 "316
-[e :U 160 ]
-[e [\ _fristTogaleOrNo , $ -> -> 0 `i `uc 161
- , $ -> -> 1 `i `uc 162
- , $ -> -> 2 `i `uc 163
- , $ -> -> 3 `i `uc 164
- , $ -> -> 4 `i `uc 165
- 159 ]
+[e :U 148 ]
+[e [\ _fristTogaleOrNo , $ -> -> 0 `i `uc 149
+ , $ -> -> 1 `i `uc 150
+ , $ -> -> 2 `i `uc 151
+ , $ -> -> 3 `i `uc 152
+ , $ -> -> 4 `i `uc 153
+ 147 ]
 "322
-[e :U 159 ]
+[e :U 147 ]
 [; ;main.c: 323: while(count--){
 "323
-[e $U 166  ]
-[e :U 167 ]
+[e $U 154  ]
+[e :U 155 ]
 {
 [; ;main.c: 324: for(unsigned char i =5 ; i>0 ;i--){
 "324
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 5 `i `uc ]
-[e $ > -> _i `i -> 0 `i 169  ]
-[e $U 170  ]
-[e :U 169 ]
+[e $ > -> _i `i -> 0 `i 157  ]
+[e $U 158  ]
+[e :U 157 ]
 {
 [; ;main.c: 325: if(i ==3)
 "325
-[e $ ! == -> _i `i -> 3 `i 172  ]
+[e $ ! == -> _i `i -> 3 `i 160  ]
 [; ;main.c: 326: i=2;
 "326
 [e = _i -> -> 2 `i `uc ]
-[e :U 172 ]
+[e :U 160 ]
 [; ;main.c: 327: switch(flage){
 "327
-[e $U 174  ]
+[e $U 162  ]
 {
 [; ;main.c: 328: case 1 : GPIO ^=(1<<i); break;
 "328
-[e :U 175 ]
+[e :U 163 ]
 [e =^ _GPIO -> << -> 1 `i _i `uc ]
-[e $U 173  ]
+[e $U 161  ]
 [; ;main.c: 329: case 2 : GPIO ^=((1<<5)|(1<<4)) ; GPIO ^=((1<<2)|(1<<1)); break;
 "329
-[e :U 176 ]
+[e :U 164 ]
 [e =^ _GPIO -> | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i `uc ]
 [e =^ _GPIO -> | << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-[e $U 173  ]
+[e $U 161  ]
 [; ;main.c: 330: case 4 : GPIO ^=((1<<5)|(1<<4)|(1<<2)|(1<<1)); break;
 "330
-[e :U 177 ]
+[e :U 165 ]
 [e =^ _GPIO -> | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-[e $U 173  ]
+[e $U 161  ]
 "331
 }
 [; ;main.c: 331: }
-[e $U 173  ]
+[e $U 161  ]
 "327
-[e :U 174 ]
-[e [\ _flage , $ -> -> 1 `i `uc 175
- , $ -> -> 2 `i `uc 176
- , $ -> -> 4 `i `uc 177
- 173 ]
+[e :U 162 ]
+[e [\ _flage , $ -> -> 1 `i `uc 163
+ , $ -> -> 2 `i `uc 164
+ , $ -> -> 4 `i `uc 165
+ 161 ]
 "331
-[e :U 173 ]
-[; ;main.c: 333: while(!(GPIO & (1<< 3))){
-"333
-[e $U 178  ]
-[e :U 179 ]
-{
-[; ;main.c: 334: GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));
-"334
-[e =| _GPIO -> | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-"335
-}
-[e :U 178 ]
-"333
-[e $ ! != & -> _GPIO `i << -> 1 `i -> 3 `i -> 0 `i 179  ]
-[e :U 180 ]
-[; ;main.c: 335: }
+[e :U 161 ]
 [; ;main.c: 337: delay_val=GetADCValue(1<<0);
 "337
 [e = _delay_val -> ( _GetADCValue (1 -> << -> 1 `i -> 0 `i `uc `us ]
@@ -1441,16 +1366,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "324
 [e -- _i -> -> 1 `i `uc ]
-[e $ > -> _i `i -> 0 `i 169  ]
-[e :U 170 ]
+[e $ > -> _i `i -> 0 `i 157  ]
+[e :U 158 ]
 "340
 }
 "343
 }
-[e :U 166 ]
+[e :U 154 ]
 "323
-[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 167  ]
-[e :U 168 ]
+[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 155  ]
+[e :U 156 ]
 [; ;main.c: 340: }
 [; ;main.c: 343: }
 [; ;main.c: 344: count=5;
@@ -1458,72 +1383,57 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _count -> -> 5 `i `uc ]
 [; ;main.c: 352: while(count--){
 "352
-[e $U 181  ]
-[e :U 182 ]
+[e $U 166  ]
+[e :U 167 ]
 {
 [; ;main.c: 353: for(unsigned char i =1 ; i<6 ;i++){
 "353
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 184  ]
-[e $U 185  ]
-[e :U 184 ]
+[e $ < -> _i `i -> 6 `i 169  ]
+[e $U 170  ]
+[e :U 169 ]
 {
 [; ;main.c: 354: if(i ==3)
 "354
-[e $ ! == -> _i `i -> 3 `i 187  ]
+[e $ ! == -> _i `i -> 3 `i 172  ]
 [; ;main.c: 355: i=4;
 "355
 [e = _i -> -> 4 `i `uc ]
-[e :U 187 ]
+[e :U 172 ]
 [; ;main.c: 356: switch(flage){
 "356
-[e $U 189  ]
+[e $U 174  ]
 {
 [; ;main.c: 357: case 1 : GPIO ^=(1<<i); break;
 "357
-[e :U 190 ]
+[e :U 175 ]
 [e =^ _GPIO -> << -> 1 `i _i `uc ]
-[e $U 188  ]
+[e $U 173  ]
 [; ;main.c: 358: case 2 : GPIO ^=((1<<5)|(1<<4)) ; GPIO ^=((1<<2)|(1<<1)); break;
 "358
-[e :U 191 ]
+[e :U 176 ]
 [e =^ _GPIO -> | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i `uc ]
 [e =^ _GPIO -> | << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-[e $U 188  ]
+[e $U 173  ]
 [; ;main.c: 359: case 4 : GPIO ^=((1<<5)|(1<<4)|(1<<2)|(1<<1)); break;
 "359
-[e :U 192 ]
+[e :U 177 ]
 [e =^ _GPIO -> | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-[e $U 188  ]
+[e $U 173  ]
 "361
 }
 [; ;main.c: 361: }
-[e $U 188  ]
+[e $U 173  ]
 "356
-[e :U 189 ]
-[e [\ _flage , $ -> -> 1 `i `uc 190
- , $ -> -> 2 `i `uc 191
- , $ -> -> 4 `i `uc 192
- 188 ]
+[e :U 174 ]
+[e [\ _flage , $ -> -> 1 `i `uc 175
+ , $ -> -> 2 `i `uc 176
+ , $ -> -> 4 `i `uc 177
+ 173 ]
 "361
-[e :U 188 ]
-[; ;main.c: 363: while(!(GPIO & (1<< 3))){
-"363
-[e $U 193  ]
-[e :U 194 ]
-{
-[; ;main.c: 364: GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));
-"364
-[e =| _GPIO -> | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-"365
-}
-[e :U 193 ]
-"363
-[e $ ! != & -> _GPIO `i << -> 1 `i -> 3 `i -> 0 `i 194  ]
-[e :U 195 ]
-[; ;main.c: 365: }
+[e :U 173 ]
 [; ;main.c: 367: delay_val=GetADCValue(1<<0);
 "367
 [e = _delay_val -> ( _GetADCValue (1 -> << -> 1 `i -> 0 `i `uc `us ]
@@ -1534,16 +1444,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "353
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 184  ]
-[e :U 185 ]
+[e $ < -> _i `i -> 6 `i 169  ]
+[e :U 170 ]
 "370
 }
 "373
 }
-[e :U 181 ]
+[e :U 166 ]
 "352
-[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 182  ]
-[e :U 183 ]
+[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 167  ]
+[e :U 168 ]
 [; ;main.c: 370: }
 [; ;main.c: 373: }
 [; ;main.c: 374: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));
@@ -1551,7 +1461,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _GPIO -> ~ | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
 [; ;main.c: 376: }
 "376
-[e :UE 158 ]
+[e :UE 146 ]
 }
 "378
 [v _forwardBackwordLightOneOnly `(v ~T0 @X0 1 ef ]
@@ -1565,44 +1475,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _count -> -> 5 `i `uc ]
 [; ;main.c: 380: while(count--){
 "380
-[e $U 197  ]
-[e :U 198 ]
+[e $U 179  ]
+[e :U 180 ]
 {
 [; ;main.c: 381: for(unsigned char i =5 ; i>0 ;i--){
 "381
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 5 `i `uc ]
-[e $ > -> _i `i -> 0 `i 200  ]
-[e $U 201  ]
-[e :U 200 ]
+[e $ > -> _i `i -> 0 `i 182  ]
+[e $U 183  ]
+[e :U 182 ]
 {
 [; ;main.c: 382: if(i ==3)
 "382
-[e $ ! == -> _i `i -> 3 `i 203  ]
+[e $ ! == -> _i `i -> 3 `i 185  ]
 [; ;main.c: 383: i=2;
 "383
 [e = _i -> -> 2 `i `uc ]
-[e :U 203 ]
+[e :U 185 ]
 [; ;main.c: 384: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO |=(1<<i);
 "384
 [e =& _GPIO -> ~ | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
 [e =| _GPIO -> << -> 1 `i _i `uc ]
-[; ;main.c: 387: while(!(GPIO & (1<< 3))){
-"387
-[e $U 204  ]
-[e :U 205 ]
-{
-[; ;main.c: 388: GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));
-"388
-[e =| _GPIO -> | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-"389
-}
-[e :U 204 ]
-"387
-[e $ ! != & -> _GPIO `i << -> 1 `i -> 3 `i -> 0 `i 205  ]
-[e :U 206 ]
-[; ;main.c: 389: }
 [; ;main.c: 391: delay_val=GetADCValue(1<<0);
 "391
 [e = _delay_val -> ( _GetADCValue (1 -> << -> 1 `i -> 0 `i `uc `us ]
@@ -1613,16 +1508,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "381
 [e -- _i -> -> 1 `i `uc ]
-[e $ > -> _i `i -> 0 `i 200  ]
-[e :U 201 ]
+[e $ > -> _i `i -> 0 `i 182  ]
+[e :U 183 ]
 "394
 }
 "396
 }
-[e :U 197 ]
+[e :U 179 ]
 "380
-[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 198  ]
-[e :U 199 ]
+[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 180  ]
+[e :U 181 ]
 [; ;main.c: 394: }
 [; ;main.c: 396: }
 [; ;main.c: 397: count=5;
@@ -1630,25 +1525,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _count -> -> 5 `i `uc ]
 [; ;main.c: 398: while(count--){
 "398
-[e $U 207  ]
-[e :U 208 ]
+[e $U 186  ]
+[e :U 187 ]
 {
 [; ;main.c: 399: for(unsigned char i =1 ; i<6 ;i++){
 "399
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 210  ]
-[e $U 211  ]
-[e :U 210 ]
+[e $ < -> _i `i -> 6 `i 189  ]
+[e $U 190  ]
+[e :U 189 ]
 {
 [; ;main.c: 400: if(i ==3)
 "400
-[e $ ! == -> _i `i -> 3 `i 213  ]
+[e $ ! == -> _i `i -> 3 `i 192  ]
 [; ;main.c: 401: i=4;
 "401
 [e = _i -> -> 4 `i `uc ]
-[e :U 213 ]
+[e :U 192 ]
 [; ;main.c: 402: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO |=(1<<i);
 "402
 [e =& _GPIO -> ~ | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
@@ -1663,16 +1558,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "399
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 210  ]
-[e :U 211 ]
+[e $ < -> _i `i -> 6 `i 189  ]
+[e :U 190 ]
 "407
 }
 "409
 }
-[e :U 207 ]
+[e :U 186 ]
 "398
-[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 208  ]
-[e :U 209 ]
+[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 187  ]
+[e :U 188 ]
 [; ;main.c: 407: }
 [; ;main.c: 409: }
 [; ;main.c: 410: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));
@@ -1680,7 +1575,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _GPIO -> ~ | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
 [; ;main.c: 411: }
 "411
-[e :UE 196 ]
+[e :UE 178 ]
 }
 "413
 [v _forwardBackwordLightOneByOne `(v ~T0 @X0 1 ef ]
@@ -1694,43 +1589,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _count -> -> 5 `i `uc ]
 [; ;main.c: 415: while(count--){
 "415
-[e $U 215  ]
-[e :U 216 ]
+[e $U 194  ]
+[e :U 195 ]
 {
 [; ;main.c: 416: for(unsigned char i =5 ; i>0 ;i--){
 "416
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 5 `i `uc ]
-[e $ > -> _i `i -> 0 `i 218  ]
-[e $U 219  ]
-[e :U 218 ]
+[e $ > -> _i `i -> 0 `i 197  ]
+[e $U 198  ]
+[e :U 197 ]
 {
 [; ;main.c: 417: if(i ==3)
 "417
-[e $ ! == -> _i `i -> 3 `i 221  ]
+[e $ ! == -> _i `i -> 3 `i 200  ]
 [; ;main.c: 418: i=2;
 "418
 [e = _i -> -> 2 `i `uc ]
-[e :U 221 ]
+[e :U 200 ]
 [; ;main.c: 419: GPIO |=(1<<i);
 "419
 [e =| _GPIO -> << -> 1 `i _i `uc ]
-[; ;main.c: 422: while(!(GPIO & (1<< 3))){
-"422
-[e $U 222  ]
-[e :U 223 ]
-{
-[; ;main.c: 423: GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));
-"423
-[e =| _GPIO -> | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-"424
-}
-[e :U 222 ]
-"422
-[e $ ! != & -> _GPIO `i << -> 1 `i -> 3 `i -> 0 `i 223  ]
-[e :U 224 ]
-[; ;main.c: 424: }
 [; ;main.c: 426: delay_val=GetADCValue(1<<0);
 "426
 [e = _delay_val -> ( _GetADCValue (1 -> << -> 1 `i -> 0 `i `uc `us ]
@@ -1741,8 +1621,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "416
 [e -- _i -> -> 1 `i `uc ]
-[e $ > -> _i `i -> 0 `i 218  ]
-[e :U 219 ]
+[e $ > -> _i `i -> 0 `i 197  ]
+[e :U 198 ]
 "429
 }
 [; ;main.c: 429: }
@@ -1751,53 +1631,38 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _GPIO -> ~ | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
 "432
 }
-[e :U 215 ]
+[e :U 194 ]
 "415
-[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 216  ]
-[e :U 217 ]
+[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 195  ]
+[e :U 196 ]
 [; ;main.c: 432: }
 [; ;main.c: 433: count=5;
 "433
 [e = _count -> -> 5 `i `uc ]
 [; ;main.c: 434: while(count--){
 "434
-[e $U 225  ]
-[e :U 226 ]
+[e $U 201  ]
+[e :U 202 ]
 {
 [; ;main.c: 435: for(unsigned char i =1 ; i<6 ;i++){
 "435
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 228  ]
-[e $U 229  ]
-[e :U 228 ]
+[e $ < -> _i `i -> 6 `i 204  ]
+[e $U 205  ]
+[e :U 204 ]
 {
 [; ;main.c: 436: if(i ==3)
 "436
-[e $ ! == -> _i `i -> 3 `i 231  ]
+[e $ ! == -> _i `i -> 3 `i 207  ]
 [; ;main.c: 437: i=4;
 "437
 [e = _i -> -> 4 `i `uc ]
-[e :U 231 ]
+[e :U 207 ]
 [; ;main.c: 438: GPIO |=(1<<i);
 "438
 [e =| _GPIO -> << -> 1 `i _i `uc ]
-[; ;main.c: 440: while(!(GPIO & (1<< 3))){
-"440
-[e $U 232  ]
-[e :U 233 ]
-{
-[; ;main.c: 441: GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));
-"441
-[e =| _GPIO -> | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-"442
-}
-[e :U 232 ]
-"440
-[e $ ! != & -> _GPIO `i << -> 1 `i -> 3 `i -> 0 `i 233  ]
-[e :U 234 ]
-[; ;main.c: 442: }
 [; ;main.c: 445: delay_val=GetADCValue(1<<0);
 "445
 [e = _delay_val -> ( _GetADCValue (1 -> << -> 1 `i -> 0 `i `uc `us ]
@@ -1808,8 +1673,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "435
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 228  ]
-[e :U 229 ]
+[e $ < -> _i `i -> 6 `i 204  ]
+[e :U 205 ]
 "448
 }
 [; ;main.c: 448: }
@@ -1818,17 +1683,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _GPIO -> ~ | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
 "451
 }
-[e :U 225 ]
+[e :U 201 ]
 "434
-[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 226  ]
-[e :U 227 ]
+[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 202  ]
+[e :U 203 ]
 [; ;main.c: 451: }
 [; ;main.c: 452: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));
 "452
 [e =& _GPIO -> ~ | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
 [; ;main.c: 453: }
 "453
-[e :UE 214 ]
+[e :UE 193 ]
 }
 "454
 [v _forwardBackwordLightOneOnlyAndRevese `(v ~T0 @X0 1 ef1`uc ]
@@ -1843,28 +1708,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _count -> -> 5 `i `uc ]
 [; ;main.c: 456: while(count--){
 "456
-[e $U 236  ]
-[e :U 237 ]
+[e $U 209  ]
+[e :U 210 ]
 {
 [; ;main.c: 457: for(unsigned char i =5 ; i>0 ;i--){
 "457
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 5 `i `uc ]
-[e $ > -> _i `i -> 0 `i 239  ]
-[e $U 240  ]
-[e :U 239 ]
+[e $ > -> _i `i -> 0 `i 212  ]
+[e $U 213  ]
+[e :U 212 ]
 {
 [; ;main.c: 458: if(i ==3)
 "458
-[e $ ! == -> _i `i -> 3 `i 242  ]
+[e $ ! == -> _i `i -> 3 `i 215  ]
 [; ;main.c: 459: i=2;
 "459
 [e = _i -> -> 2 `i `uc ]
-[e :U 242 ]
+[e :U 215 ]
 [; ;main.c: 460: if(flage){
 "460
-[e $ ! != -> _flage `i -> -> -> 0 `i `uc `i 243  ]
+[e $ ! != -> _flage `i -> -> -> 0 `i `uc `i 216  ]
 {
 [; ;main.c: 461: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO |=(1<<i);
 "461
@@ -1873,8 +1738,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "462
 }
 [; ;main.c: 462: }else{
-[e $U 244  ]
-[e :U 243 ]
+[e $U 217  ]
+[e :U 216 ]
 {
 [; ;main.c: 463: GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO &=~(1<<i);
 "463
@@ -1882,23 +1747,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _GPIO -> ~ << -> 1 `i _i `uc ]
 "464
 }
-[e :U 244 ]
+[e :U 217 ]
 [; ;main.c: 464: }
-[; ;main.c: 466: while(!(GPIO & (1<< 3))){
-"466
-[e $U 245  ]
-[e :U 246 ]
-{
-[; ;main.c: 467: GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));
-"467
-[e =| _GPIO -> | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-"468
-}
-[e :U 245 ]
-"466
-[e $ ! != & -> _GPIO `i << -> 1 `i -> 3 `i -> 0 `i 246  ]
-[e :U 247 ]
-[; ;main.c: 468: }
 [; ;main.c: 471: delay_val=GetADCValue(1<<0);
 "471
 [e = _delay_val -> ( _GetADCValue (1 -> << -> 1 `i -> 0 `i `uc `us ]
@@ -1909,8 +1759,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "457
 [e -- _i -> -> 1 `i `uc ]
-[e $ > -> _i `i -> 0 `i 239  ]
-[e :U 240 ]
+[e $ > -> _i `i -> 0 `i 212  ]
+[e :U 213 ]
 "474
 }
 [; ;main.c: 474: }
@@ -1919,20 +1769,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 248  ]
-[e $U 249  ]
-[e :U 248 ]
+[e $ < -> _i `i -> 6 `i 218  ]
+[e $U 219  ]
+[e :U 218 ]
 {
 [; ;main.c: 478: if(i ==3)
 "478
-[e $ ! == -> _i `i -> 3 `i 251  ]
+[e $ ! == -> _i `i -> 3 `i 221  ]
 [; ;main.c: 479: i=4;
 "479
 [e = _i -> -> 4 `i `uc ]
-[e :U 251 ]
+[e :U 221 ]
 [; ;main.c: 480: if(flage){
 "480
-[e $ ! != -> _flage `i -> -> -> 0 `i `uc `i 252  ]
+[e $ ! != -> _flage `i -> -> -> 0 `i `uc `i 222  ]
 {
 [; ;main.c: 481: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO |=(1<<i);
 "481
@@ -1941,8 +1791,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "482
 }
 [; ;main.c: 482: }else{
-[e $U 253  ]
-[e :U 252 ]
+[e $U 223  ]
+[e :U 222 ]
 {
 [; ;main.c: 483: GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO &=~(1<<i);
 "483
@@ -1950,23 +1800,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _GPIO -> ~ << -> 1 `i _i `uc ]
 "484
 }
-[e :U 253 ]
+[e :U 223 ]
 [; ;main.c: 484: }
-[; ;main.c: 486: while(!(GPIO & (1<< 3))){
-"486
-[e $U 254  ]
-[e :U 255 ]
-{
-[; ;main.c: 487: GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));
-"487
-[e =| _GPIO -> | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-"488
-}
-[e :U 254 ]
-"486
-[e $ ! != & -> _GPIO `i << -> 1 `i -> 3 `i -> 0 `i 255  ]
-[e :U 256 ]
-[; ;main.c: 488: }
 [; ;main.c: 490: delay_val=GetADCValue(1<<0);
 "490
 [e = _delay_val -> ( _GetADCValue (1 -> << -> 1 `i -> 0 `i `uc `us ]
@@ -1977,16 +1812,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "477
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 248  ]
-[e :U 249 ]
+[e $ < -> _i `i -> 6 `i 218  ]
+[e :U 219 ]
 "493
 }
 "496
 }
-[e :U 236 ]
+[e :U 209 ]
 "456
-[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 237  ]
-[e :U 238 ]
+[e $ != -> -- _count -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 210  ]
+[e :U 211 ]
 [; ;main.c: 493: }
 [; ;main.c: 496: }
 [; ;main.c: 497: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));
@@ -1994,5 +1829,5 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _GPIO -> ~ | | | << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
 [; ;main.c: 498: }
 "498
-[e :UE 235 ]
+[e :UE 208 ]
 }

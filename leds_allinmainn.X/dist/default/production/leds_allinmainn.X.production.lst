@@ -1,0 +1,2255 @@
+
+
+Microchip Technology PIC LITE Macro Assembler V1.36 build -262312587 
+                                                                                               Fri Aug 27 14:01:32 2021
+
+Microchip Technology Omniscient Code Generator v1.36 (Free mode) build 201601150325
+     1                           	processor	12F675
+     2                           	opt	pw 120
+     3                           	opt	lm
+     4                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     5                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
+     6                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+     7                           	psect	maintext,global,class=CODE,split=1,delta=2
+     8                           	psect	text1,local,class=CODE,merge=1,delta=2
+     9                           	psect	swtext1,local,class=CONST,delta=2
+    10                           	psect	text2,local,class=CODE,merge=1,delta=2
+    11                           	psect	text3,local,class=CODE,merge=1,delta=2
+    12                           	psect	text4,local,class=CODE,merge=1,delta=2
+    13                           	psect	text5,local,class=CODE,merge=1,delta=2
+    14                           	psect	text6,local,class=CODE,merge=1,delta=2
+    15                           	psect	text7,local,class=CODE,merge=1,delta=2
+    16                           	psect	text8,local,class=CODE,merge=1,delta=2
+    17                           	dabs	1,0x5E,2
+    18  0000                     	;# 
+    19  0001                     	;# 
+    20  0002                     	;# 
+    21  0003                     	;# 
+    22  0004                     	;# 
+    23  0005                     	;# 
+    24  000A                     	;# 
+    25  000B                     	;# 
+    26  000C                     	;# 
+    27  000E                     	;# 
+    28  000E                     	;# 
+    29  000F                     	;# 
+    30  0010                     	;# 
+    31  0019                     	;# 
+    32  001E                     	;# 
+    33  001F                     	;# 
+    34  0081                     	;# 
+    35  0085                     	;# 
+    36  008C                     	;# 
+    37  008E                     	;# 
+    38  0090                     	;# 
+    39  0095                     	;# 
+    40  0096                     	;# 
+    41  0096                     	;# 
+    42  0099                     	;# 
+    43  009A                     	;# 
+    44  009A                     	;# 
+    45  009B                     	;# 
+    46  009C                     	;# 
+    47  009D                     	;# 
+    48  009E                     	;# 
+    49  009F                     	;# 
+    50  001F                     _ADCON0	set	31
+    51  001E                     _ADRESH	set	30
+    52  0019                     _CMCON	set	25
+    53  0005                     _GPIO	set	5
+    54  00F9                     _GO_nDONE	set	249
+    55  009E                     _ADRESL	set	158
+    56  009F                     _ANSEL	set	159
+    57  0085                     _TRISIO	set	133
+    58  0099                     _VRCON	set	153
+    59                           
+    60                           ; #config settings
+    61  0000                     
+    62                           	psect	cinit
+    63  03FB                     start_initialization:	
+    64  03FB                     __initialization:	
+    65                           
+    66                           ; Clear objects allocated to BANK0
+    67  03FB  01AD               	clrf	__pbssBANK0& (0+127)
+    68  03FC  01AE               	clrf	(__pbssBANK0+1)& (0+127)
+    69  03FD                     end_of_initialization:	
+    70                           ;End of C runtime variable initialization code
+    71                           
+    72  03FD                     __end_of__initialization:	
+    73  03FD  0183               	clrf	3
+    74  03FE  28D0               	ljmp	_main	;jump to C main() function
+    75                           
+    76                           	psect	bssBANK0
+    77  002D                     __pbssBANK0:	
+    78  002D                     _delay_val:	
+    79  002D                     	ds	2
+    80                           
+    81                           	psect	cstackBANK0
+    82  0020                     __pcstackBANK0:	
+    83  0020                     ?_gpio_init:	
+    84  0020                     ??_gpio_init:	
+    85                           ; 1 bytes @ 0x0
+    86                           
+    87  0020                     ?_InitADC:	
+    88                           ; 1 bytes @ 0x0
+    89                           
+    90  0020                     ??_InitADC:	
+    91                           ; 1 bytes @ 0x0
+    92                           
+    93  0020                     ?_forwardBackwordLightOneOnlyAndRevese:	
+    94                           ; 1 bytes @ 0x0
+    95                           
+    96  0020                     ?_forwardBackStepByStep:	
+    97                           ; 1 bytes @ 0x0
+    98                           
+    99  0020                     ?_forwardBackStepByStepReverse:	
+   100                           ; 1 bytes @ 0x0
+   101                           
+   102  0020                     ?_main:	
+   103                           ; 1 bytes @ 0x0
+   104                           
+   105  0020                     ?_my_delay_ms:	
+   106                           ; 1 bytes @ 0x0
+   107                           
+   108  0020                     ?_GetADCValue:	
+   109                           ; 1 bytes @ 0x0
+   110                           
+   111  0020                     my_delay_ms@n:	
+   112                           ; 2 bytes @ 0x0
+   113                           
+   114                           
+   115                           ; 2 bytes @ 0x0
+   116  0020                     	ds	1
+   117  0021                     InitADC@Channel:	
+   118                           
+   119                           ; 1 bytes @ 0x1
+   120  0021                     	ds	1
+   121  0022                     ??_GetADCValue:	
+   122  0022                     ??_my_delay_ms:	
+   123                           ; 1 bytes @ 0x2
+   124                           
+   125                           
+   126                           ; 1 bytes @ 0x2
+   127  0022                     	ds	2
+   128  0024                     GetADCValue@Channel:	
+   129                           
+   130                           ; 1 bytes @ 0x4
+   131  0024                     	ds	1
+   132  0025                     ??_forwardBackwordLightOneOnlyAndRevese:	
+   133  0025                     ??_forwardBackStepByStep:	
+   134                           ; 1 bytes @ 0x5
+   135                           
+   136  0025                     ??_forwardBackStepByStepReverse:	
+   137                           ; 1 bytes @ 0x5
+   138                           
+   139  0025                     ?_togaleLeds:	
+   140                           ; 1 bytes @ 0x5
+   141                           
+   142  0025                     togaleLeds@fristTogaleOrNo:	
+   143                           ; 1 bytes @ 0x5
+   144                           
+   145                           
+   146                           ; 1 bytes @ 0x5
+   147  0025                     	ds	1
+   148  0026                     ??_togaleLeds:	
+   149                           
+   150                           ; 1 bytes @ 0x6
+   151  0026                     	ds	1
+   152  0027                     forwardBackStepByStep@flage:	
+   153  0027                     forwardBackStepByStepReverse@count:	
+   154                           ; 1 bytes @ 0x7
+   155                           
+   156  0027                     forwardBackwordLightOneOnlyAndRevese@count:	
+   157                           ; 1 bytes @ 0x7
+   158                           
+   159                           
+   160                           ; 1 bytes @ 0x7
+   161  0027                     	ds	1
+   162  0028                     forwardBackStepByStep@count:	
+   163  0028                     forwardBackStepByStepReverse@flage:	
+   164                           ; 1 bytes @ 0x8
+   165                           
+   166  0028                     togaleLeds@flage:	
+   167                           ; 1 bytes @ 0x8
+   168                           
+   169  0028                     forwardBackwordLightOneOnlyAndRevese@flage:	
+   170                           ; 1 bytes @ 0x8
+   171                           
+   172                           
+   173                           ; 1 bytes @ 0x8
+   174  0028                     	ds	1
+   175  0029                     forwardBackStepByStep@i:	
+   176  0029                     forwardBackStepByStepReverse@i:	
+   177                           ; 1 bytes @ 0x9
+   178                           
+   179  0029                     togaleLeds@count:	
+   180                           ; 1 bytes @ 0x9
+   181                           
+   182  0029                     forwardBackwordLightOneOnlyAndRevese@i:	
+   183                           ; 1 bytes @ 0x9
+   184                           
+   185                           
+   186                           ; 1 bytes @ 0x9
+   187  0029                     	ds	1
+   188  002A                     forwardBackStepByStep@i_79:	
+   189  002A                     forwardBackStepByStepReverse@i_84:	
+   190                           ; 1 bytes @ 0xA
+   191                           
+   192  002A                     togaleLeds@i:	
+   193                           ; 1 bytes @ 0xA
+   194                           
+   195  002A                     forwardBackwordLightOneOnlyAndRevese@i_103:	
+   196                           ; 1 bytes @ 0xA
+   197                           
+   198                           
+   199                           ; 1 bytes @ 0xA
+   200  002A                     	ds	1
+   201  002B                     togaleLeds@i_90:	
+   202                           
+   203                           ; 1 bytes @ 0xB
+   204  002B                     	ds	1
+   205  002C                     ??_main:	
+   206                           
+   207                           ; 1 bytes @ 0xC
+   208  002C                     	ds	1
+   209                           
+   210                           	psect	maintext
+   211  00D0                     __pmaintext:	
+   212 ;;
+   213 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   214 ;;
+   215 ;; *************** function _main *****************
+   216 ;; Defined at:
+   217 ;;		line 116 in file "main.c"
+   218 ;; Parameters:    Size  Location     Type
+   219 ;;		None
+   220 ;; Auto vars:     Size  Location     Type
+   221 ;;		None
+   222 ;; Return value:  Size  Location     Type
+   223 ;;                  1    wreg      void 
+   224 ;; Registers used:
+   225 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   226 ;; Tracked objects:
+   227 ;;		On entry : B00/0
+   228 ;;		On exit  : 0/0
+   229 ;;		Unchanged: 0/0
+   230 ;; Data sizes:     COMMON   BANK0
+   231 ;;      Params:         0       0
+   232 ;;      Locals:         0       0
+   233 ;;      Temps:          0       1
+   234 ;;      Totals:         0       1
+   235 ;;Total ram usage:        1 bytes
+   236 ;; Hardware stack levels required when called:    2
+   237 ;; This function calls:
+   238 ;;		_InitADC
+   239 ;;		_forwardBackStepByStep
+   240 ;;		_forwardBackStepByStepReverse
+   241 ;;		_forwardBackwordLightOneOnlyAndRevese
+   242 ;;		_gpio_init
+   243 ;;		_togaleLeds
+   244 ;; This function is called by:
+   245 ;;		Startup code after reset
+   246 ;; This function uses a non-reentrant model
+   247 ;;
+   248                           
+   249                           
+   250                           ;psect for function _main
+   251  00D0                     _main:	
+   252                           
+   253                           ;main.c: 117: gpio_init();
+   254                           
+   255                           ;incstack = 0
+   256                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   257  00D0  20A9               	fcall	_gpio_init
+   258                           
+   259                           ;main.c: 118: InitADC(1<<0);
+   260  00D1  3001               	movlw	1
+   261  00D2  2090               	fcall	_InitADC
+   262  00D3                     l1406:	
+   263                           ;main.c: 119: while(1){
+   264                           
+   265                           
+   266                           ;main.c: 120: forwardBackwordLightOneOnlyAndRevese(1);
+   267  00D3  3001               	movlw	1
+   268  00D4  2130               	fcall	_forwardBackwordLightOneOnlyAndRevese
+   269                           
+   270                           ;main.c: 121: forwardBackwordLightOneOnlyAndRevese(0);
+   271  00D5  3000               	movlw	0
+   272  00D6  2130               	fcall	_forwardBackwordLightOneOnlyAndRevese
+   273                           
+   274                           ;main.c: 122: forwardBackStepByStep(0);
+   275  00D7  3000               	movlw	0
+   276  00D8  2338               	fcall	_forwardBackStepByStep
+   277                           
+   278                           ;main.c: 123: forwardBackStepByStep(1);
+   279  00D9  3001               	movlw	1
+   280  00DA  2338               	fcall	_forwardBackStepByStep
+   281                           
+   282                           ;main.c: 124: forwardBackStepByStepReverse(0);
+   283  00DB  3000               	movlw	0
+   284  00DC  21CF               	fcall	_forwardBackStepByStepReverse
+   285                           
+   286                           ;main.c: 125: forwardBackStepByStepReverse(1);
+   287  00DD  3001               	movlw	1
+   288  00DE  21CF               	fcall	_forwardBackStepByStepReverse
+   289                           
+   290                           ;main.c: 126: togaleLeds(1 , 0);
+   291  00DF  1283               	bcf	3,5	;RP0=0, select bank0
+   292  00E0  01A5               	clrf	togaleLeds@fristTogaleOrNo
+   293  00E1  3001               	movlw	1
+   294  00E2  227C               	fcall	_togaleLeds
+   295                           
+   296                           ;main.c: 127: togaleLeds(1 , 4);
+   297  00E3  3004               	movlw	4
+   298  00E4  1283               	bcf	3,5	;RP0=0, select bank0
+   299  00E5  00AC               	movwf	??_main
+   300  00E6  082C               	movf	??_main,w
+   301  00E7  00A5               	movwf	togaleLeds@fristTogaleOrNo
+   302  00E8  3001               	movlw	1
+   303  00E9  227C               	fcall	_togaleLeds
+   304                           
+   305                           ;main.c: 128: togaleLeds(2 , 3);
+   306  00EA  3003               	movlw	3
+   307  00EB  1283               	bcf	3,5	;RP0=0, select bank0
+   308  00EC  00AC               	movwf	??_main
+   309  00ED  082C               	movf	??_main,w
+   310  00EE  00A5               	movwf	togaleLeds@fristTogaleOrNo
+   311  00EF  3002               	movlw	2
+   312  00F0  227C               	fcall	_togaleLeds
+   313                           
+   314                           ;main.c: 129: togaleLeds(2 , 4);
+   315  00F1  3004               	movlw	4
+   316  00F2  1283               	bcf	3,5	;RP0=0, select bank0
+   317  00F3  00AC               	movwf	??_main
+   318  00F4  082C               	movf	??_main,w
+   319  00F5  00A5               	movwf	togaleLeds@fristTogaleOrNo
+   320  00F6  3002               	movlw	2
+   321  00F7  227C               	fcall	_togaleLeds
+   322  00F8  28D3               	goto	l1406
+   323  00F9                     __end_of_main:	
+   324                           ;main.c: 133: }
+   325                           ;main.c: 135: return;
+   326                           
+   327                           
+   328                           	psect	text1
+   329  027C                     __ptext1:	
+   330 ;; *************** function _togaleLeds *****************
+   331 ;; Defined at:
+   332 ;;		line 314 in file "main.c"
+   333 ;; Parameters:    Size  Location     Type
+   334 ;;  flage           1    wreg     unsigned char 
+   335 ;;  fristTogaleO    1    5[BANK0 ] unsigned char 
+   336 ;; Auto vars:     Size  Location     Type
+   337 ;;  flage           1    8[BANK0 ] unsigned char 
+   338 ;;  i               1   11[BANK0 ] unsigned char 
+   339 ;;  i               1   10[BANK0 ] unsigned char 
+   340 ;;  count           1    9[BANK0 ] unsigned char 
+   341 ;; Return value:  Size  Location     Type
+   342 ;;                  1    wreg      void 
+   343 ;; Registers used:
+   344 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   345 ;; Tracked objects:
+   346 ;;		On entry : 0/0
+   347 ;;		On exit  : 0/0
+   348 ;;		Unchanged: 0/0
+   349 ;; Data sizes:     COMMON   BANK0
+   350 ;;      Params:         0       1
+   351 ;;      Locals:         0       4
+   352 ;;      Temps:          0       2
+   353 ;;      Totals:         0       7
+   354 ;;Total ram usage:        7 bytes
+   355 ;; Hardware stack levels used:    1
+   356 ;; Hardware stack levels required when called:    1
+   357 ;; This function calls:
+   358 ;;		_GetADCValue
+   359 ;;		_my_delay_ms
+   360 ;; This function is called by:
+   361 ;;		_main
+   362 ;; This function uses a non-reentrant model
+   363 ;;
+   364                           
+   365                           
+   366                           ;psect for function _togaleLeds
+   367  027C                     _togaleLeds:	
+   368                           
+   369                           ;incstack = 0
+   370                           ; Regs used in _togaleLeds: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   371                           ;togaleLeds@flage stored from wreg
+   372  027C  1283               	bcf	3,5	;RP0=0, select bank0
+   373  027D  00A8               	movwf	togaleLeds@flage
+   374                           
+   375                           ;main.c: 315: unsigned char count=5;
+   376  027E  3005               	movlw	5
+   377  027F  00A6               	movwf	??_togaleLeds
+   378  0280  0826               	movf	??_togaleLeds,w
+   379  0281  00A9               	movwf	togaleLeds@count
+   380                           
+   381                           ;main.c: 316: switch(fristTogaleOrNo){
+   382  0282  2A93               	goto	l1336
+   383  0283                     l1324:	
+   384                           ;main.c: 317: case 0 : GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1)) ; break;
+   385                           
+   386  0283  30C9               	movlw	201
+   387  0284  00A6               	movwf	??_togaleLeds
+   388  0285  0826               	movf	??_togaleLeds,w
+   389  0286  0585               	andwf	5,f	;volatile
+   390  0287  2A9E               	goto	l1366
+   391  0288                     l1326:	
+   392                           ;main.c: 318: case 1 : GPIO ^=(1<<5); break;
+   393                           
+   394  0288  3020               	movlw	32
+   395  0289  2A8F               	goto	L3
+   396  028A                     l1328:	
+   397                           ;main.c: 319: case 2 : GPIO ^=(1<<4); break;
+   398                           
+   399  028A  3010               	movlw	16
+   400  028B  2A8F               	goto	L3
+   401  028C                     l1330:	
+   402                           ;main.c: 320: case 3 : GPIO ^=((1<<5)|(1<<4)); break;
+   403                           
+   404  028C  3030               	movlw	48
+   405  028D  2A8F               	goto	L3
+   406  028E                     l1332:	
+   407                           ;main.c: 321: case 4 : GPIO ^=((1<<5)|(1<<1)); break;
+   408                           
+   409  028E  3022               	movlw	34
+   410  028F                     L3:	
+   411  028F  00A6               	movwf	??_togaleLeds
+   412  0290  0826               	movf	??_togaleLeds,w
+   413  0291  0685               	xorwf	5,f	;volatile
+   414                           
+   415                           ;main.c: 322: }
+   416  0292  2A9E               	goto	l1366
+   417  0293                     l1336:	
+   418  0293  0825               	movf	togaleLeds@fristTogaleOrNo,w
+   419                           
+   420                           ; Switch size 1, requested type "space"
+   421                           ; Number of cases is 5, Range of values is 0 to 4
+   422                           ; switch strategies available:
+   423                           ; Name         Instructions Cycles
+   424                           ; direct_byte           11     6 (fixed)
+   425                           ; simple_byte           16     9 (average)
+   426                           ; jumptable            260     6 (fixed)
+   427                           ;	Chosen strategy is direct_byte
+   428  0294  0084               	movwf	4
+   429  0295  3005               	movlw	5
+   430  0296  0204               	subwf	4,w
+   431  0297  1803               	skipnc
+   432  0298  2A9E               	goto	l1366
+   433  0299  3000               	movlw	high S1546
+   434  029A  008A               	movwf	10
+   435  029B  3001               	movlw	low S1546
+   436  029C  0704               	addwf	4,w
+   437  029D  0082               	movwf	2
+   438  029E                     l1366:	
+   439                           ;main.c: 323: while(count--){
+   440                           
+   441  029E  3001               	movlw	1
+   442  029F  02A9               	subwf	togaleLeds@count,f
+   443  02A0  0A29               	incf	togaleLeds@count,w
+   444  02A1  1903               	btfsc	3,2
+   445  02A2  2AE6               	goto	l1368
+   446                           
+   447                           ;main.c: 324: for(unsigned char i =5 ; i>0 ;i--){
+   448  02A3  3005               	movlw	5
+   449  02A4  00A6               	movwf	??_togaleLeds
+   450  02A5  0826               	movf	??_togaleLeds,w
+   451  02A6  00AA               	movwf	togaleLeds@i
+   452  02A7                     L9:	
+   453  02A7  082A               	movf	togaleLeds@i,w
+   454  02A8  1903               	btfsc	3,2
+   455  02A9  2A9E               	goto	l1366
+   456                           
+   457                           ;main.c: 325: if(i ==3)
+   458  02AA  3003               	movlw	3
+   459  02AB  062A               	xorwf	togaleLeds@i,w
+   460  02AC  1D03               	btfss	3,2
+   461  02AD  2ACB               	goto	l1356
+   462                           
+   463                           ;main.c: 326: i=2;
+   464  02AE  3002               	movlw	2
+   465  02AF  00A6               	movwf	??_togaleLeds
+   466  02B0  0826               	movf	??_togaleLeds,w
+   467  02B1  00AA               	movwf	togaleLeds@i
+   468                           
+   469                           ;main.c: 327: switch(flage){
+   470  02B2  2ACB               	goto	l1356
+   471  02B3                     l1348:	
+   472                           ;main.c: 328: case 1 : GPIO ^=(1<<i); break;
+   473                           
+   474  02B3  3001               	movlw	1
+   475  02B4  00A6               	movwf	??_togaleLeds
+   476  02B5  0A2A               	incf	togaleLeds@i,w
+   477  02B6  2AB9               	goto	u1094
+   478  02B7                     u1095:	
+   479  02B7  1003               	clrc
+   480  02B8  0DA6               	rlf	??_togaleLeds,f
+   481  02B9                     u1094:	
+   482  02B9  3EFF               	addlw	-1
+   483  02BA  1D03               	skipz
+   484  02BB  2AB7               	goto	u1095
+   485  02BC  0826               	movf	??_togaleLeds,w
+   486  02BD  00A7               	movwf	??_togaleLeds+1
+   487  02BE  0827               	movf	??_togaleLeds+1,w
+   488  02BF  2AC9               	goto	L5
+   489  02C0                     l1350:	
+   490                           ;main.c: 329: case 2 : GPIO ^=((1<<5)|(1<<4)) ; GPIO ^=((1<<2)|(1<<1)); break;
+   491                           
+   492  02C0  3030               	movlw	48
+   493  02C1  00A6               	movwf	??_togaleLeds
+   494  02C2  0826               	movf	??_togaleLeds,w
+   495  02C3  0685               	xorwf	5,f	;volatile
+   496  02C4  3006               	movlw	6
+   497  02C5  2AC7               	goto	L8
+   498  02C6                     l1352:	
+   499                           ;main.c: 330: case 4 : GPIO ^=((1<<5)|(1<<4)|(1<<2)|(1<<1)); break;
+   500                           
+   501  02C6  3036               	movlw	54
+   502  02C7                     L8:	
+   503  02C7  00A6               	movwf	??_togaleLeds
+   504  02C8  0826               	movf	??_togaleLeds,w
+   505  02C9                     L5:	
+   506  02C9  0685               	xorwf	5,f	;volatile
+   507                           
+   508                           ;main.c: 331: }
+   509  02CA  2AD6               	goto	l1358
+   510  02CB                     l1356:	
+   511  02CB  0828               	movf	togaleLeds@flage,w
+   512                           
+   513                           ; Switch size 1, requested type "space"
+   514                           ; Number of cases is 3, Range of values is 1 to 4
+   515                           ; switch strategies available:
+   516                           ; Name         Instructions Cycles
+   517                           ; simple_byte           10     6 (average)
+   518                           ; direct_byte           13     9 (fixed)
+   519                           ; jumptable            263     9 (fixed)
+   520                           ;	Chosen strategy is simple_byte
+   521  02CC  3A01               	xorlw	1	; case 1
+   522  02CD  1903               	skipnz
+   523  02CE  2AB3               	goto	l1348
+   524  02CF  3A03               	xorlw	3	; case 2
+   525  02D0  1903               	skipnz
+   526  02D1  2AC0               	goto	l1350
+   527  02D2  3A06               	xorlw	6	; case 4
+   528  02D3  1903               	skipnz
+   529  02D4  2AC6               	goto	l1352
+   530  02D5  2AD6               	goto	l1358
+   531  02D6                     l1358:	
+   532                           
+   533                           ;main.c: 337: delay_val=GetADCValue(1<<0);
+   534  02D6  3001               	movlw	1
+   535  02D7  20F9               	fcall	_GetADCValue
+   536  02D8  1283               	bcf	3,5	;RP0=0, select bank0
+   537  02D9  0821               	movf	?_GetADCValue+1,w
+   538  02DA  00AE               	movwf	_delay_val+1
+   539  02DB  0820               	movf	?_GetADCValue,w
+   540  02DC  00AD               	movwf	_delay_val
+   541                           
+   542                           ;main.c: 338: my_delay_ms(delay_val);
+   543  02DD  082E               	movf	_delay_val+1,w
+   544  02DE  00A1               	movwf	my_delay_ms@n+1
+   545  02DF  082D               	movf	_delay_val,w
+   546  02E0  00A0               	movwf	my_delay_ms@n
+   547  02E1  207B               	fcall	_my_delay_ms
+   548  02E2  3001               	movlw	1
+   549  02E3  1283               	bcf	3,5	;RP0=0, select bank0
+   550  02E4  02AA               	subwf	togaleLeds@i,f
+   551  02E5  2AA7               	goto	L9
+   552  02E6                     l1368:	
+   553                           
+   554                           ;main.c: 340: }
+   555                           ;main.c: 343: }
+   556                           ;main.c: 344: count=5;
+   557  02E6  3005               	movlw	5
+   558  02E7  00A6               	movwf	??_togaleLeds
+   559  02E8  0826               	movf	??_togaleLeds,w
+   560  02E9  00A9               	movwf	togaleLeds@count
+   561  02EA                     l1396:	
+   562                           ;main.c: 352: while(count--){
+   563                           
+   564  02EA  3001               	movlw	1
+   565  02EB  02A9               	subwf	togaleLeds@count,f
+   566  02EC  0A29               	incf	togaleLeds@count,w
+   567  02ED  1903               	btfsc	3,2
+   568  02EE  2B33               	goto	l1398
+   569                           
+   570                           ;main.c: 353: for(unsigned char i =1 ; i<6 ;i++){
+   571  02EF  01AB               	clrf	togaleLeds@i_90
+   572  02F0  0AAB               	incf	togaleLeds@i_90,f
+   573  02F1                     L11:	
+   574  02F1  3006               	movlw	6
+   575  02F2  022B               	subwf	togaleLeds@i_90,w
+   576  02F3  1803               	btfsc	3,0
+   577  02F4  2AEA               	goto	l1396
+   578                           
+   579                           ;main.c: 354: if(i ==3)
+   580  02F5  3003               	movlw	3
+   581  02F6  062B               	xorwf	togaleLeds@i_90,w
+   582  02F7  1D03               	btfss	3,2
+   583  02F8  2B16               	goto	l1386
+   584                           
+   585                           ;main.c: 355: i=4;
+   586  02F9  3004               	movlw	4
+   587  02FA  00A6               	movwf	??_togaleLeds
+   588  02FB  0826               	movf	??_togaleLeds,w
+   589  02FC  00AB               	movwf	togaleLeds@i_90
+   590                           
+   591                           ;main.c: 356: switch(flage){
+   592  02FD  2B16               	goto	l1386
+   593  02FE                     l1378:	
+   594                           ;main.c: 357: case 1 : GPIO ^=(1<<i); break;
+   595                           
+   596  02FE  3001               	movlw	1
+   597  02FF  00A6               	movwf	??_togaleLeds
+   598  0300  0A2B               	incf	togaleLeds@i_90,w
+   599  0301  2B04               	goto	u1144
+   600  0302                     u1145:	
+   601  0302  1003               	clrc
+   602  0303  0DA6               	rlf	??_togaleLeds,f
+   603  0304                     u1144:	
+   604  0304  3EFF               	addlw	-1
+   605  0305  1D03               	skipz
+   606  0306  2B02               	goto	u1145
+   607  0307  0826               	movf	??_togaleLeds,w
+   608  0308  00A7               	movwf	??_togaleLeds+1
+   609  0309  0827               	movf	??_togaleLeds+1,w
+   610  030A  2B14               	goto	L7
+   611  030B                     l1380:	
+   612                           ;main.c: 358: case 2 : GPIO ^=((1<<5)|(1<<4)) ; GPIO ^=((1<<2)|(1<<1)); break;
+   613                           
+   614  030B  3030               	movlw	48
+   615  030C  00A6               	movwf	??_togaleLeds
+   616  030D  0826               	movf	??_togaleLeds,w
+   617  030E  0685               	xorwf	5,f	;volatile
+   618  030F  3006               	movlw	6
+   619  0310  2B12               	goto	L10
+   620  0311                     l1382:	
+   621                           ;main.c: 359: case 4 : GPIO ^=((1<<5)|(1<<4)|(1<<2)|(1<<1)); break;
+   622                           
+   623  0311  3036               	movlw	54
+   624  0312                     L10:	
+   625  0312  00A6               	movwf	??_togaleLeds
+   626  0313  0826               	movf	??_togaleLeds,w
+   627  0314                     L7:	
+   628  0314  0685               	xorwf	5,f	;volatile
+   629                           
+   630                           ;main.c: 361: }
+   631  0315  2B21               	goto	l1388
+   632  0316                     l1386:	
+   633  0316  0828               	movf	togaleLeds@flage,w
+   634                           
+   635                           ; Switch size 1, requested type "space"
+   636                           ; Number of cases is 3, Range of values is 1 to 4
+   637                           ; switch strategies available:
+   638                           ; Name         Instructions Cycles
+   639                           ; simple_byte           10     6 (average)
+   640                           ; direct_byte           13     9 (fixed)
+   641                           ; jumptable            263     9 (fixed)
+   642                           ;	Chosen strategy is simple_byte
+   643  0317  3A01               	xorlw	1	; case 1
+   644  0318  1903               	skipnz
+   645  0319  2AFE               	goto	l1378
+   646  031A  3A03               	xorlw	3	; case 2
+   647  031B  1903               	skipnz
+   648  031C  2B0B               	goto	l1380
+   649  031D  3A06               	xorlw	6	; case 4
+   650  031E  1903               	skipnz
+   651  031F  2B11               	goto	l1382
+   652  0320  2B21               	goto	l1388
+   653  0321                     l1388:	
+   654                           
+   655                           ;main.c: 367: delay_val=GetADCValue(1<<0);
+   656  0321  3001               	movlw	1
+   657  0322  20F9               	fcall	_GetADCValue
+   658  0323  1283               	bcf	3,5	;RP0=0, select bank0
+   659  0324  0821               	movf	?_GetADCValue+1,w
+   660  0325  00AE               	movwf	_delay_val+1
+   661  0326  0820               	movf	?_GetADCValue,w
+   662  0327  00AD               	movwf	_delay_val
+   663                           
+   664                           ;main.c: 368: my_delay_ms(delay_val);
+   665  0328  082E               	movf	_delay_val+1,w
+   666  0329  00A1               	movwf	my_delay_ms@n+1
+   667  032A  082D               	movf	_delay_val,w
+   668  032B  00A0               	movwf	my_delay_ms@n
+   669  032C  207B               	fcall	_my_delay_ms
+   670  032D  3001               	movlw	1
+   671  032E  1283               	bcf	3,5	;RP0=0, select bank0
+   672  032F  00A6               	movwf	??_togaleLeds
+   673  0330  0826               	movf	??_togaleLeds,w
+   674  0331  07AB               	addwf	togaleLeds@i_90,f
+   675  0332  2AF1               	goto	L11
+   676  0333                     l1398:	
+   677                           
+   678                           ;main.c: 370: }
+   679                           ;main.c: 373: }
+   680                           ;main.c: 374: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));
+   681  0333  30C9               	movlw	201
+   682  0334  00A6               	movwf	??_togaleLeds
+   683  0335  0826               	movf	??_togaleLeds,w
+   684  0336  0585               	andwf	5,f	;volatile
+   685  0337  0008               	return
+   686  0338                     __end_of_togaleLeds:	
+   687                           
+   688                           	psect	swtext1
+   689  0001                     __pswtext1:	
+   690  0001                     S1546:	
+   691  0001  2A83               	ljmp	l1324
+   692  0002  2A88               	ljmp	l1326
+   693  0003  2A8A               	ljmp	l1328
+   694  0004  2A8C               	ljmp	l1330
+   695  0005  2A8E               	ljmp	l1332
+   696                           
+   697                           	psect	text2
+   698  00A9                     __ptext2:	
+   699 ;; *************** function _gpio_init *****************
+   700 ;; Defined at:
+   701 ;;		line 143 in file "main.c"
+   702 ;; Parameters:    Size  Location     Type
+   703 ;;		None
+   704 ;; Auto vars:     Size  Location     Type
+   705 ;;		None
+   706 ;; Return value:  Size  Location     Type
+   707 ;;                  1    wreg      void 
+   708 ;; Registers used:
+   709 ;;		wreg, status,2, status,0
+   710 ;; Tracked objects:
+   711 ;;		On entry : 0/0
+   712 ;;		On exit  : 0/0
+   713 ;;		Unchanged: 0/0
+   714 ;; Data sizes:     COMMON   BANK0
+   715 ;;      Params:         0       0
+   716 ;;      Locals:         0       0
+   717 ;;      Temps:          0       1
+   718 ;;      Totals:         0       1
+   719 ;;Total ram usage:        1 bytes
+   720 ;; Hardware stack levels used:    1
+   721 ;; This function calls:
+   722 ;;		Nothing
+   723 ;; This function is called by:
+   724 ;;		_main
+   725 ;; This function uses a non-reentrant model
+   726 ;;
+   727                           
+   728                           
+   729                           ;psect for function _gpio_init
+   730  00A9                     _gpio_init:	
+   731                           
+   732                           ;main.c: 144: ANSEL = 0x00;
+   733                           
+   734                           ;incstack = 0
+   735                           ; Regs used in _gpio_init: [wreg+status,2+status,0]
+   736  00A9  1683               	bsf	3,5	;RP0=1, select bank1
+   737  00AA  019F               	clrf	31	;volatile
+   738                           
+   739                           ;main.c: 145: ADCON0 = 0x00;
+   740  00AB  1283               	bcf	3,5	;RP0=0, select bank0
+   741  00AC  019F               	clrf	31	;volatile
+   742                           
+   743                           ;main.c: 146: CMCON = 0x07;
+   744  00AD  3007               	movlw	7
+   745  00AE  0099               	movwf	25	;volatile
+   746                           
+   747                           ;main.c: 147: VRCON = 0x00;
+   748  00AF  1683               	bsf	3,5	;RP0=1, select bank1
+   749  00B0  0199               	clrf	25	;volatile
+   750                           
+   751                           ;main.c: 148: TRISIO = 0x00;
+   752  00B1  0185               	clrf	5	;volatile
+   753                           
+   754                           ;main.c: 149: GPIO = 0x00;
+   755  00B2  1283               	bcf	3,5	;RP0=0, select bank0
+   756  00B3  0185               	clrf	5	;volatile
+   757                           
+   758                           ;main.c: 152: TRISIO |=(1<<3);;
+   759  00B4  1683               	bsf	3,5	;RP0=1, select bank1
+   760  00B5  1585               	bsf	5,3	;volatile
+   761                           
+   762                           ;main.c: 153: TRISIO |=(1<<0);;
+   763  00B6  1405               	bsf	5,0	;volatile
+   764                           
+   765                           ;main.c: 154: TRISIO &=~(1<<5);;
+   766  00B7  30DF               	movlw	223
+   767  00B8  1283               	bcf	3,5	;RP0=0, select bank0
+   768  00B9  00A0               	movwf	??_gpio_init
+   769  00BA  0820               	movf	??_gpio_init,w
+   770  00BB  1683               	bsf	3,5	;RP0=1, select bank1
+   771  00BC  0585               	andwf	5,f	;volatile
+   772                           
+   773                           ;main.c: 155: TRISIO &=~(1<<4);;
+   774  00BD  30EF               	movlw	239
+   775  00BE  1283               	bcf	3,5	;RP0=0, select bank0
+   776  00BF  00A0               	movwf	??_gpio_init
+   777  00C0  0820               	movf	??_gpio_init,w
+   778  00C1  1683               	bsf	3,5	;RP0=1, select bank1
+   779  00C2  0585               	andwf	5,f	;volatile
+   780                           
+   781                           ;main.c: 156: TRISIO &=~(1<<2);;
+   782  00C3  30FB               	movlw	251
+   783  00C4  1283               	bcf	3,5	;RP0=0, select bank0
+   784  00C5  00A0               	movwf	??_gpio_init
+   785  00C6  0820               	movf	??_gpio_init,w
+   786  00C7  1683               	bsf	3,5	;RP0=1, select bank1
+   787  00C8  0585               	andwf	5,f	;volatile
+   788                           
+   789                           ;main.c: 157: TRISIO &=~(1<<1);;
+   790  00C9  30FD               	movlw	253
+   791  00CA  1283               	bcf	3,5	;RP0=0, select bank0
+   792  00CB  00A0               	movwf	??_gpio_init
+   793  00CC  0820               	movf	??_gpio_init,w
+   794  00CD  1683               	bsf	3,5	;RP0=1, select bank1
+   795  00CE  0585               	andwf	5,f	;volatile
+   796  00CF  0008               	return
+   797  00D0                     __end_of_gpio_init:	
+   798                           
+   799                           	psect	text3
+   800  0130                     __ptext3:	
+   801 ;; *************** function _forwardBackwordLightOneOnlyAndRevese *****************
+   802 ;; Defined at:
+   803 ;;		line 454 in file "main.c"
+   804 ;; Parameters:    Size  Location     Type
+   805 ;;  flage           1    wreg     unsigned char 
+   806 ;; Auto vars:     Size  Location     Type
+   807 ;;  flage           1    8[BANK0 ] unsigned char 
+   808 ;;  i               1   10[BANK0 ] unsigned char 
+   809 ;;  i               1    9[BANK0 ] unsigned char 
+   810 ;;  count           1    7[BANK0 ] unsigned char 
+   811 ;; Return value:  Size  Location     Type
+   812 ;;                  1    wreg      void 
+   813 ;; Registers used:
+   814 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   815 ;; Tracked objects:
+   816 ;;		On entry : 0/0
+   817 ;;		On exit  : 0/0
+   818 ;;		Unchanged: 0/0
+   819 ;; Data sizes:     COMMON   BANK0
+   820 ;;      Params:         0       0
+   821 ;;      Locals:         0       4
+   822 ;;      Temps:          0       2
+   823 ;;      Totals:         0       6
+   824 ;;Total ram usage:        6 bytes
+   825 ;; Hardware stack levels used:    1
+   826 ;; Hardware stack levels required when called:    1
+   827 ;; This function calls:
+   828 ;;		_GetADCValue
+   829 ;;		_my_delay_ms
+   830 ;; This function is called by:
+   831 ;;		_main
+   832 ;; This function uses a non-reentrant model
+   833 ;;
+   834                           
+   835                           
+   836                           ;psect for function _forwardBackwordLightOneOnlyAndRevese
+   837  0130                     _forwardBackwordLightOneOnlyAndRevese:	
+   838                           
+   839                           ;incstack = 0
+   840                           ; Regs used in _forwardBackwordLightOneOnlyAndRevese: [wreg-fsr0h+status,2+status,0+pcla
+      +                          th+cstack]
+   841                           ;forwardBackwordLightOneOnlyAndRevese@flage stored from wreg
+   842  0130  1283               	bcf	3,5	;RP0=0, select bank0
+   843  0131  00A8               	movwf	forwardBackwordLightOneOnlyAndRevese@flage
+   844                           
+   845                           ;main.c: 455: unsigned char count=5;
+   846  0132  3005               	movlw	5
+   847  0133  00A5               	movwf	??_forwardBackwordLightOneOnlyAndRevese
+   848  0134  0825               	movf	??_forwardBackwordLightOneOnlyAndRevese,w
+   849  0135  00A7               	movwf	forwardBackwordLightOneOnlyAndRevese@count
+   850  0136                     l1202:	
+   851                           ;main.c: 456: while(count--){
+   852                           
+   853  0136  3001               	movlw	1
+   854  0137  02A7               	subwf	forwardBackwordLightOneOnlyAndRevese@count,f
+   855  0138  0A27               	incf	forwardBackwordLightOneOnlyAndRevese@count,w
+   856  0139  1903               	btfsc	3,2
+   857  013A  29CA               	goto	l1204
+   858                           
+   859                           ;main.c: 457: for(unsigned char i =5 ; i>0 ;i--){
+   860  013B  3005               	movlw	5
+   861  013C  00A5               	movwf	??_forwardBackwordLightOneOnlyAndRevese
+   862  013D  0825               	movf	??_forwardBackwordLightOneOnlyAndRevese,w
+   863  013E  00A9               	movwf	forwardBackwordLightOneOnlyAndRevese@i
+   864  013F  0829               	movf	forwardBackwordLightOneOnlyAndRevese@i,w
+   865  0140  1903               	btfsc	3,2
+   866  0141  2983               	goto	l176
+   867  0142                     l1162:	
+   868                           
+   869                           ;main.c: 458: if(i ==3)
+   870  0142  3003               	movlw	3
+   871  0143  0629               	xorwf	forwardBackwordLightOneOnlyAndRevese@i,w
+   872  0144  1D03               	btfss	3,2
+   873  0145  294A               	goto	l1166
+   874                           
+   875                           ;main.c: 459: i=2;
+   876  0146  3002               	movlw	2
+   877  0147  00A5               	movwf	??_forwardBackwordLightOneOnlyAndRevese
+   878  0148  0825               	movf	??_forwardBackwordLightOneOnlyAndRevese,w
+   879  0149  00A9               	movwf	forwardBackwordLightOneOnlyAndRevese@i
+   880  014A                     l1166:	
+   881                           
+   882                           ;main.c: 460: if(flage){
+   883  014A  0828               	movf	forwardBackwordLightOneOnlyAndRevese@flage,w
+   884  014B  1903               	btfsc	3,2
+   885  014C  295F               	goto	l1170
+   886                           
+   887                           ;main.c: 461: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO |=(1<<i);
+   888  014D  30C9               	movlw	201
+   889  014E  00A5               	movwf	??_forwardBackwordLightOneOnlyAndRevese
+   890  014F  0825               	movf	??_forwardBackwordLightOneOnlyAndRevese,w
+   891  0150  0585               	andwf	5,f	;volatile
+   892  0151  3001               	movlw	1
+   893  0152  00A5               	movwf	??_forwardBackwordLightOneOnlyAndRevese
+   894  0153  0A29               	incf	forwardBackwordLightOneOnlyAndRevese@i,w
+   895  0154  2957               	goto	u744
+   896  0155                     u745:	
+   897  0155  1003               	clrc
+   898  0156  0DA5               	rlf	??_forwardBackwordLightOneOnlyAndRevese,f
+   899  0157                     u744:	
+   900  0157  3EFF               	addlw	-1
+   901  0158  1D03               	skipz
+   902  0159  2955               	goto	u745
+   903  015A  0825               	movf	??_forwardBackwordLightOneOnlyAndRevese,w
+   904  015B  00A6               	movwf	??_forwardBackwordLightOneOnlyAndRevese+1
+   905  015C  0826               	movf	??_forwardBackwordLightOneOnlyAndRevese+1,w
+   906  015D  0485               	iorwf	5,f	;volatile
+   907                           
+   908                           ;main.c: 462: }else{
+   909  015E  2971               	goto	l1172
+   910  015F                     l1170:	
+   911                           
+   912                           ;main.c: 463: GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO &=~(1<<i);
+   913  015F  3036               	movlw	54
+   914  0160  00A5               	movwf	??_forwardBackwordLightOneOnlyAndRevese
+   915  0161  0825               	movf	??_forwardBackwordLightOneOnlyAndRevese,w
+   916  0162  0485               	iorwf	5,f	;volatile
+   917  0163  3001               	movlw	1
+   918  0164  00A5               	movwf	??_forwardBackwordLightOneOnlyAndRevese
+   919  0165  0A29               	incf	forwardBackwordLightOneOnlyAndRevese@i,w
+   920  0166  2969               	goto	u754
+   921  0167                     u755:	
+   922  0167  1003               	clrc
+   923  0168  0DA5               	rlf	??_forwardBackwordLightOneOnlyAndRevese,f
+   924  0169                     u754:	
+   925  0169  3EFF               	addlw	-1
+   926  016A  1D03               	skipz
+   927  016B  2967               	goto	u755
+   928  016C  0825               	movf	??_forwardBackwordLightOneOnlyAndRevese,w
+   929  016D  3AFF               	xorlw	255
+   930  016E  00A6               	movwf	??_forwardBackwordLightOneOnlyAndRevese+1
+   931  016F  0826               	movf	??_forwardBackwordLightOneOnlyAndRevese+1,w
+   932  0170  0585               	andwf	5,f	;volatile
+   933  0171                     l1172:	
+   934                           
+   935                           ;main.c: 464: }
+   936                           ;main.c: 471: delay_val=GetADCValue(1<<0);
+   937  0171  3001               	movlw	1
+   938  0172  20F9               	fcall	_GetADCValue
+   939  0173  1283               	bcf	3,5	;RP0=0, select bank0
+   940  0174  0821               	movf	?_GetADCValue+1,w
+   941  0175  00AE               	movwf	_delay_val+1
+   942  0176  0820               	movf	?_GetADCValue,w
+   943  0177  00AD               	movwf	_delay_val
+   944                           
+   945                           ;main.c: 472: my_delay_ms(delay_val);
+   946  0178  082E               	movf	_delay_val+1,w
+   947  0179  00A1               	movwf	my_delay_ms@n+1
+   948  017A  082D               	movf	_delay_val,w
+   949  017B  00A0               	movwf	my_delay_ms@n
+   950  017C  207B               	fcall	_my_delay_ms
+   951  017D  3001               	movlw	1
+   952  017E  1283               	bcf	3,5	;RP0=0, select bank0
+   953  017F  02A9               	subwf	forwardBackwordLightOneOnlyAndRevese@i,f
+   954  0180  0829               	movf	forwardBackwordLightOneOnlyAndRevese@i,w
+   955  0181  1D03               	btfss	3,2
+   956  0182  2942               	goto	l1162
+   957  0183                     l176:	
+   958                           
+   959                           ;main.c: 474: }
+   960                           ;main.c: 477: for(unsigned char i =1 ; i<6 ;i++){
+   961  0183  01AA               	clrf	forwardBackwordLightOneOnlyAndRevese@i_103
+   962  0184  0AAA               	incf	forwardBackwordLightOneOnlyAndRevese@i_103,f
+   963  0185                     L12:	
+   964  0185  3006               	movlw	6
+   965  0186  022A               	subwf	forwardBackwordLightOneOnlyAndRevese@i_103,w
+   966  0187  1803               	btfsc	3,0
+   967  0188  2936               	goto	l1202
+   968                           
+   969                           ;main.c: 478: if(i ==3)
+   970  0189  3003               	movlw	3
+   971  018A  062A               	xorwf	forwardBackwordLightOneOnlyAndRevese@i_103,w
+   972  018B  1D03               	btfss	3,2
+   973  018C  2991               	goto	l1188
+   974                           
+   975                           ;main.c: 479: i=4;
+   976  018D  3004               	movlw	4
+   977  018E  00A5               	movwf	??_forwardBackwordLightOneOnlyAndRevese
+   978  018F  0825               	movf	??_forwardBackwordLightOneOnlyAndRevese,w
+   979  0190  00AA               	movwf	forwardBackwordLightOneOnlyAndRevese@i_103
+   980  0191                     l1188:	
+   981                           
+   982                           ;main.c: 480: if(flage){
+   983  0191  0828               	movf	forwardBackwordLightOneOnlyAndRevese@flage,w
+   984  0192  1903               	btfsc	3,2
+   985  0193  29A6               	goto	l1192
+   986                           
+   987                           ;main.c: 481: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO |=(1<<i);
+   988  0194  30C9               	movlw	201
+   989  0195  00A5               	movwf	??_forwardBackwordLightOneOnlyAndRevese
+   990  0196  0825               	movf	??_forwardBackwordLightOneOnlyAndRevese,w
+   991  0197  0585               	andwf	5,f	;volatile
+   992  0198  3001               	movlw	1
+   993  0199  00A5               	movwf	??_forwardBackwordLightOneOnlyAndRevese
+   994  019A  0A2A               	incf	forwardBackwordLightOneOnlyAndRevese@i_103,w
+   995  019B  299E               	goto	u804
+   996  019C                     u805:	
+   997  019C  1003               	clrc
+   998  019D  0DA5               	rlf	??_forwardBackwordLightOneOnlyAndRevese,f
+   999  019E                     u804:	
+  1000  019E  3EFF               	addlw	-1
+  1001  019F  1D03               	skipz
+  1002  01A0  299C               	goto	u805
+  1003  01A1  0825               	movf	??_forwardBackwordLightOneOnlyAndRevese,w
+  1004  01A2  00A6               	movwf	??_forwardBackwordLightOneOnlyAndRevese+1
+  1005  01A3  0826               	movf	??_forwardBackwordLightOneOnlyAndRevese+1,w
+  1006  01A4  0485               	iorwf	5,f	;volatile
+  1007                           
+  1008                           ;main.c: 482: }else{
+  1009  01A5  29B8               	goto	l1194
+  1010  01A6                     l1192:	
+  1011                           
+  1012                           ;main.c: 483: GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO &=~(1<<i);
+  1013  01A6  3036               	movlw	54
+  1014  01A7  00A5               	movwf	??_forwardBackwordLightOneOnlyAndRevese
+  1015  01A8  0825               	movf	??_forwardBackwordLightOneOnlyAndRevese,w
+  1016  01A9  0485               	iorwf	5,f	;volatile
+  1017  01AA  3001               	movlw	1
+  1018  01AB  00A5               	movwf	??_forwardBackwordLightOneOnlyAndRevese
+  1019  01AC  0A2A               	incf	forwardBackwordLightOneOnlyAndRevese@i_103,w
+  1020  01AD  29B0               	goto	u814
+  1021  01AE                     u815:	
+  1022  01AE  1003               	clrc
+  1023  01AF  0DA5               	rlf	??_forwardBackwordLightOneOnlyAndRevese,f
+  1024  01B0                     u814:	
+  1025  01B0  3EFF               	addlw	-1
+  1026  01B1  1D03               	skipz
+  1027  01B2  29AE               	goto	u815
+  1028  01B3  0825               	movf	??_forwardBackwordLightOneOnlyAndRevese,w
+  1029  01B4  3AFF               	xorlw	255
+  1030  01B5  00A6               	movwf	??_forwardBackwordLightOneOnlyAndRevese+1
+  1031  01B6  0826               	movf	??_forwardBackwordLightOneOnlyAndRevese+1,w
+  1032  01B7  0585               	andwf	5,f	;volatile
+  1033  01B8                     l1194:	
+  1034                           
+  1035                           ;main.c: 484: }
+  1036                           ;main.c: 490: delay_val=GetADCValue(1<<0);
+  1037  01B8  3001               	movlw	1
+  1038  01B9  20F9               	fcall	_GetADCValue
+  1039  01BA  1283               	bcf	3,5	;RP0=0, select bank0
+  1040  01BB  0821               	movf	?_GetADCValue+1,w
+  1041  01BC  00AE               	movwf	_delay_val+1
+  1042  01BD  0820               	movf	?_GetADCValue,w
+  1043  01BE  00AD               	movwf	_delay_val
+  1044                           
+  1045                           ;main.c: 491: my_delay_ms(delay_val);
+  1046  01BF  082E               	movf	_delay_val+1,w
+  1047  01C0  00A1               	movwf	my_delay_ms@n+1
+  1048  01C1  082D               	movf	_delay_val,w
+  1049  01C2  00A0               	movwf	my_delay_ms@n
+  1050  01C3  207B               	fcall	_my_delay_ms
+  1051  01C4  3001               	movlw	1
+  1052  01C5  1283               	bcf	3,5	;RP0=0, select bank0
+  1053  01C6  00A5               	movwf	??_forwardBackwordLightOneOnlyAndRevese
+  1054  01C7  0825               	movf	??_forwardBackwordLightOneOnlyAndRevese,w
+  1055  01C8  07AA               	addwf	forwardBackwordLightOneOnlyAndRevese@i_103,f
+  1056  01C9  2985               	goto	L12
+  1057  01CA                     l1204:	
+  1058                           
+  1059                           ;main.c: 493: }
+  1060                           ;main.c: 496: }
+  1061                           ;main.c: 497: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));
+  1062  01CA  30C9               	movlw	201
+  1063  01CB  00A5               	movwf	??_forwardBackwordLightOneOnlyAndRevese
+  1064  01CC  0825               	movf	??_forwardBackwordLightOneOnlyAndRevese,w
+  1065  01CD  0585               	andwf	5,f	;volatile
+  1066  01CE  0008               	return
+  1067  01CF                     __end_of_forwardBackwordLightOneOnlyAndRevese:	
+  1068                           
+  1069                           	psect	text4
+  1070  01CF                     __ptext4:	
+  1071 ;; *************** function _forwardBackStepByStepReverse *****************
+  1072 ;; Defined at:
+  1073 ;;		line 271 in file "main.c"
+  1074 ;; Parameters:    Size  Location     Type
+  1075 ;;  flage           1    wreg     unsigned char 
+  1076 ;; Auto vars:     Size  Location     Type
+  1077 ;;  flage           1    8[BANK0 ] unsigned char 
+  1078 ;;  i               1   10[BANK0 ] unsigned char 
+  1079 ;;  i               1    9[BANK0 ] unsigned char 
+  1080 ;;  count           1    7[BANK0 ] unsigned char 
+  1081 ;; Return value:  Size  Location     Type
+  1082 ;;                  1    wreg      void 
+  1083 ;; Registers used:
+  1084 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+  1085 ;; Tracked objects:
+  1086 ;;		On entry : 0/0
+  1087 ;;		On exit  : 0/0
+  1088 ;;		Unchanged: 0/0
+  1089 ;; Data sizes:     COMMON   BANK0
+  1090 ;;      Params:         0       0
+  1091 ;;      Locals:         0       4
+  1092 ;;      Temps:          0       2
+  1093 ;;      Totals:         0       6
+  1094 ;;Total ram usage:        6 bytes
+  1095 ;; Hardware stack levels used:    1
+  1096 ;; Hardware stack levels required when called:    1
+  1097 ;; This function calls:
+  1098 ;;		_GetADCValue
+  1099 ;;		_my_delay_ms
+  1100 ;; This function is called by:
+  1101 ;;		_main
+  1102 ;; This function uses a non-reentrant model
+  1103 ;;
+  1104                           
+  1105                           
+  1106                           ;psect for function _forwardBackStepByStepReverse
+  1107  01CF                     _forwardBackStepByStepReverse:	
+  1108                           
+  1109                           ;incstack = 0
+  1110                           ; Regs used in _forwardBackStepByStepReverse: [wreg-fsr0h+status,2+status,0+pclath+cstac
+      +                          k]
+  1111                           ;forwardBackStepByStepReverse@flage stored from wreg
+  1112  01CF  1283               	bcf	3,5	;RP0=0, select bank0
+  1113  01D0  00A8               	movwf	forwardBackStepByStepReverse@flage
+  1114                           
+  1115                           ;main.c: 272: unsigned char count=5;
+  1116  01D1  3005               	movlw	5
+  1117  01D2  00A5               	movwf	??_forwardBackStepByStepReverse
+  1118  01D3  0825               	movf	??_forwardBackStepByStepReverse,w
+  1119  01D4  00A7               	movwf	forwardBackStepByStepReverse@count
+  1120  01D5                     l1318:	
+  1121                           ;main.c: 273: while(count--){
+  1122                           
+  1123  01D5  3001               	movlw	1
+  1124  01D6  02A7               	subwf	forwardBackStepByStepReverse@count,f
+  1125  01D7  0A27               	incf	forwardBackStepByStepReverse@count,w
+  1126  01D8  1903               	btfsc	3,2
+  1127  01D9  2A77               	goto	l1320
+  1128                           
+  1129                           ;main.c: 274: for(unsigned char i =5 ; i>0 ;i--){
+  1130  01DA  3005               	movlw	5
+  1131  01DB  00A5               	movwf	??_forwardBackStepByStepReverse
+  1132  01DC  0825               	movf	??_forwardBackStepByStepReverse,w
+  1133  01DD  00A9               	movwf	forwardBackStepByStepReverse@i
+  1134  01DE  0829               	movf	forwardBackStepByStepReverse@i,w
+  1135  01DF  1903               	btfsc	3,2
+  1136  01E0  2A29               	goto	l94
+  1137  01E1                     l1274:	
+  1138                           
+  1139                           ;main.c: 275: if(i ==3)
+  1140  01E1  3003               	movlw	3
+  1141  01E2  0629               	xorwf	forwardBackStepByStepReverse@i,w
+  1142  01E3  1D03               	btfss	3,2
+  1143  01E4  2A0F               	goto	l1284
+  1144                           
+  1145                           ;main.c: 276: i=2;
+  1146  01E5  3002               	movlw	2
+  1147  01E6  00A5               	movwf	??_forwardBackStepByStepReverse
+  1148  01E7  0825               	movf	??_forwardBackStepByStepReverse,w
+  1149  01E8  00A9               	movwf	forwardBackStepByStepReverse@i
+  1150                           
+  1151                           ;main.c: 277: switch(flage){
+  1152  01E9  2A0F               	goto	l1284
+  1153  01EA                     l1278:	
+  1154                           ;main.c: 278: case 0: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO |=(1<<i); break;
+  1155                           
+  1156  01EA  30C9               	movlw	201
+  1157  01EB  00A5               	movwf	??_forwardBackStepByStepReverse
+  1158  01EC  0825               	movf	??_forwardBackStepByStepReverse,w
+  1159  01ED  0585               	andwf	5,f	;volatile
+  1160  01EE  3001               	movlw	1
+  1161  01EF  00A5               	movwf	??_forwardBackStepByStepReverse
+  1162  01F0  0A29               	incf	forwardBackStepByStepReverse@i,w
+  1163  01F1  29F4               	goto	u984
+  1164  01F2                     u985:	
+  1165  01F2  1003               	clrc
+  1166  01F3  0DA5               	rlf	??_forwardBackStepByStepReverse,f
+  1167  01F4                     u984:	
+  1168  01F4  3EFF               	addlw	-1
+  1169  01F5  1D03               	skipz
+  1170  01F6  29F2               	goto	u985
+  1171  01F7  0825               	movf	??_forwardBackStepByStepReverse,w
+  1172  01F8  00A6               	movwf	??_forwardBackStepByStepReverse+1
+  1173  01F9  0826               	movf	??_forwardBackStepByStepReverse+1,w
+  1174  01FA  0485               	iorwf	5,f	;volatile
+  1175  01FB  2A17               	goto	l1286
+  1176  01FC                     l1280:	
+  1177                           ;main.c: 279: case 1 : GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO &=~(1<<i); break;
+  1178                           
+  1179  01FC  3036               	movlw	54
+  1180  01FD  00A5               	movwf	??_forwardBackStepByStepReverse
+  1181  01FE  0825               	movf	??_forwardBackStepByStepReverse,w
+  1182  01FF  0485               	iorwf	5,f	;volatile
+  1183  0200  3001               	movlw	1
+  1184  0201  00A5               	movwf	??_forwardBackStepByStepReverse
+  1185  0202  0A29               	incf	forwardBackStepByStepReverse@i,w
+  1186  0203  2A06               	goto	u994
+  1187  0204                     u995:	
+  1188  0204  1003               	clrc
+  1189  0205  0DA5               	rlf	??_forwardBackStepByStepReverse,f
+  1190  0206                     u994:	
+  1191  0206  3EFF               	addlw	-1
+  1192  0207  1D03               	skipz
+  1193  0208  2A04               	goto	u995
+  1194  0209  0825               	movf	??_forwardBackStepByStepReverse,w
+  1195  020A  3AFF               	xorlw	255
+  1196  020B  00A6               	movwf	??_forwardBackStepByStepReverse+1
+  1197  020C  0826               	movf	??_forwardBackStepByStepReverse+1,w
+  1198  020D  0585               	andwf	5,f	;volatile
+  1199                           
+  1200                           ;main.c: 280: }
+  1201  020E  2A17               	goto	l1286
+  1202  020F                     l1284:	
+  1203  020F  0828               	movf	forwardBackStepByStepReverse@flage,w
+  1204                           
+  1205                           ; Switch size 1, requested type "space"
+  1206                           ; Number of cases is 2, Range of values is 0 to 1
+  1207                           ; switch strategies available:
+  1208                           ; Name         Instructions Cycles
+  1209                           ; simple_byte            7     4 (average)
+  1210                           ; direct_byte            8     6 (fixed)
+  1211                           ; jumptable            260     6 (fixed)
+  1212                           ;	Chosen strategy is simple_byte
+  1213  0210  3A00               	xorlw	0	; case 0
+  1214  0211  1903               	skipnz
+  1215  0212  29EA               	goto	l1278
+  1216  0213  3A01               	xorlw	1	; case 1
+  1217  0214  1903               	skipnz
+  1218  0215  29FC               	goto	l1280
+  1219  0216  2A17               	goto	l1286
+  1220  0217                     l1286:	
+  1221                           
+  1222                           ;main.c: 286: delay_val=GetADCValue(1<<0);
+  1223  0217  3001               	movlw	1
+  1224  0218  20F9               	fcall	_GetADCValue
+  1225  0219  1283               	bcf	3,5	;RP0=0, select bank0
+  1226  021A  0821               	movf	?_GetADCValue+1,w
+  1227  021B  00AE               	movwf	_delay_val+1
+  1228  021C  0820               	movf	?_GetADCValue,w
+  1229  021D  00AD               	movwf	_delay_val
+  1230                           
+  1231                           ;main.c: 287: my_delay_ms(delay_val);
+  1232  021E  082E               	movf	_delay_val+1,w
+  1233  021F  00A1               	movwf	my_delay_ms@n+1
+  1234  0220  082D               	movf	_delay_val,w
+  1235  0221  00A0               	movwf	my_delay_ms@n
+  1236  0222  207B               	fcall	_my_delay_ms
+  1237  0223  3001               	movlw	1
+  1238  0224  1283               	bcf	3,5	;RP0=0, select bank0
+  1239  0225  02A9               	subwf	forwardBackStepByStepReverse@i,f
+  1240  0226  0829               	movf	forwardBackStepByStepReverse@i,w
+  1241  0227  1D03               	btfss	3,2
+  1242  0228  29E1               	goto	l1274
+  1243  0229                     l94:	
+  1244                           
+  1245                           ;main.c: 289: }
+  1246                           ;main.c: 292: for(unsigned char i =1 ; i<6 ;i++){
+  1247  0229  01AA               	clrf	forwardBackStepByStepReverse@i_84
+  1248  022A  0AAA               	incf	forwardBackStepByStepReverse@i_84,f
+  1249  022B                     L13:	
+  1250  022B  3006               	movlw	6
+  1251  022C  022A               	subwf	forwardBackStepByStepReverse@i_84,w
+  1252  022D  1803               	btfsc	3,0
+  1253  022E  29D5               	goto	l1318
+  1254                           
+  1255                           ;main.c: 293: if(i ==3)
+  1256  022F  3003               	movlw	3
+  1257  0230  062A               	xorwf	forwardBackStepByStepReverse@i_84,w
+  1258  0231  1D03               	btfss	3,2
+  1259  0232  2A5D               	goto	l1308
+  1260                           
+  1261                           ;main.c: 294: i=4;
+  1262  0233  3004               	movlw	4
+  1263  0234  00A5               	movwf	??_forwardBackStepByStepReverse
+  1264  0235  0825               	movf	??_forwardBackStepByStepReverse,w
+  1265  0236  00AA               	movwf	forwardBackStepByStepReverse@i_84
+  1266                           
+  1267                           ;main.c: 295: switch(flage){
+  1268  0237  2A5D               	goto	l1308
+  1269  0238                     l1302:	
+  1270                           ;main.c: 296: case 0: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO |=(1<<i); break;
+  1271                           
+  1272  0238  30C9               	movlw	201
+  1273  0239  00A5               	movwf	??_forwardBackStepByStepReverse
+  1274  023A  0825               	movf	??_forwardBackStepByStepReverse,w
+  1275  023B  0585               	andwf	5,f	;volatile
+  1276  023C  3001               	movlw	1
+  1277  023D  00A5               	movwf	??_forwardBackStepByStepReverse
+  1278  023E  0A2A               	incf	forwardBackStepByStepReverse@i_84,w
+  1279  023F  2A42               	goto	u1034
+  1280  0240                     u1035:	
+  1281  0240  1003               	clrc
+  1282  0241  0DA5               	rlf	??_forwardBackStepByStepReverse,f
+  1283  0242                     u1034:	
+  1284  0242  3EFF               	addlw	-1
+  1285  0243  1D03               	skipz
+  1286  0244  2A40               	goto	u1035
+  1287  0245  0825               	movf	??_forwardBackStepByStepReverse,w
+  1288  0246  00A6               	movwf	??_forwardBackStepByStepReverse+1
+  1289  0247  0826               	movf	??_forwardBackStepByStepReverse+1,w
+  1290  0248  0485               	iorwf	5,f	;volatile
+  1291  0249  2A65               	goto	l1310
+  1292  024A                     l1304:	
+  1293                           ;main.c: 297: case 1 : GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO &=~(1<<i); break;
+  1294                           
+  1295  024A  3036               	movlw	54
+  1296  024B  00A5               	movwf	??_forwardBackStepByStepReverse
+  1297  024C  0825               	movf	??_forwardBackStepByStepReverse,w
+  1298  024D  0485               	iorwf	5,f	;volatile
+  1299  024E  3001               	movlw	1
+  1300  024F  00A5               	movwf	??_forwardBackStepByStepReverse
+  1301  0250  0A2A               	incf	forwardBackStepByStepReverse@i_84,w
+  1302  0251  2A54               	goto	u1044
+  1303  0252                     u1045:	
+  1304  0252  1003               	clrc
+  1305  0253  0DA5               	rlf	??_forwardBackStepByStepReverse,f
+  1306  0254                     u1044:	
+  1307  0254  3EFF               	addlw	-1
+  1308  0255  1D03               	skipz
+  1309  0256  2A52               	goto	u1045
+  1310  0257  0825               	movf	??_forwardBackStepByStepReverse,w
+  1311  0258  3AFF               	xorlw	255
+  1312  0259  00A6               	movwf	??_forwardBackStepByStepReverse+1
+  1313  025A  0826               	movf	??_forwardBackStepByStepReverse+1,w
+  1314  025B  0585               	andwf	5,f	;volatile
+  1315                           
+  1316                           ;main.c: 298: }
+  1317  025C  2A65               	goto	l1310
+  1318  025D                     l1308:	
+  1319  025D  0828               	movf	forwardBackStepByStepReverse@flage,w
+  1320                           
+  1321                           ; Switch size 1, requested type "space"
+  1322                           ; Number of cases is 2, Range of values is 0 to 1
+  1323                           ; switch strategies available:
+  1324                           ; Name         Instructions Cycles
+  1325                           ; simple_byte            7     4 (average)
+  1326                           ; direct_byte            8     6 (fixed)
+  1327                           ; jumptable            260     6 (fixed)
+  1328                           ;	Chosen strategy is simple_byte
+  1329  025E  3A00               	xorlw	0	; case 0
+  1330  025F  1903               	skipnz
+  1331  0260  2A38               	goto	l1302
+  1332  0261  3A01               	xorlw	1	; case 1
+  1333  0262  1903               	skipnz
+  1334  0263  2A4A               	goto	l1304
+  1335  0264  2A65               	goto	l1310
+  1336  0265                     l1310:	
+  1337                           
+  1338                           ;main.c: 304: delay_val=GetADCValue(1<<0);
+  1339  0265  3001               	movlw	1
+  1340  0266  20F9               	fcall	_GetADCValue
+  1341  0267  1283               	bcf	3,5	;RP0=0, select bank0
+  1342  0268  0821               	movf	?_GetADCValue+1,w
+  1343  0269  00AE               	movwf	_delay_val+1
+  1344  026A  0820               	movf	?_GetADCValue,w
+  1345  026B  00AD               	movwf	_delay_val
+  1346                           
+  1347                           ;main.c: 305: my_delay_ms(delay_val);
+  1348  026C  082E               	movf	_delay_val+1,w
+  1349  026D  00A1               	movwf	my_delay_ms@n+1
+  1350  026E  082D               	movf	_delay_val,w
+  1351  026F  00A0               	movwf	my_delay_ms@n
+  1352  0270  207B               	fcall	_my_delay_ms
+  1353  0271  3001               	movlw	1
+  1354  0272  1283               	bcf	3,5	;RP0=0, select bank0
+  1355  0273  00A5               	movwf	??_forwardBackStepByStepReverse
+  1356  0274  0825               	movf	??_forwardBackStepByStepReverse,w
+  1357  0275  07AA               	addwf	forwardBackStepByStepReverse@i_84,f
+  1358  0276  2A2B               	goto	L13
+  1359  0277                     l1320:	
+  1360                           
+  1361                           ;main.c: 307: }
+  1362                           ;main.c: 310: }
+  1363                           ;main.c: 311: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));
+  1364  0277  30C9               	movlw	201
+  1365  0278  00A5               	movwf	??_forwardBackStepByStepReverse
+  1366  0279  0825               	movf	??_forwardBackStepByStepReverse,w
+  1367  027A  0585               	andwf	5,f	;volatile
+  1368  027B  0008               	return
+  1369  027C                     __end_of_forwardBackStepByStepReverse:	
+  1370                           
+  1371                           	psect	text5
+  1372  0338                     __ptext5:	
+  1373 ;; *************** function _forwardBackStepByStep *****************
+  1374 ;; Defined at:
+  1375 ;;		line 225 in file "main.c"
+  1376 ;; Parameters:    Size  Location     Type
+  1377 ;;  flage           1    wreg     unsigned char 
+  1378 ;; Auto vars:     Size  Location     Type
+  1379 ;;  flage           1    7[BANK0 ] unsigned char 
+  1380 ;;  i               1   10[BANK0 ] unsigned char 
+  1381 ;;  i               1    9[BANK0 ] unsigned char 
+  1382 ;;  count           1    8[BANK0 ] unsigned char 
+  1383 ;; Return value:  Size  Location     Type
+  1384 ;;                  1    wreg      void 
+  1385 ;; Registers used:
+  1386 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+  1387 ;; Tracked objects:
+  1388 ;;		On entry : 0/0
+  1389 ;;		On exit  : 0/0
+  1390 ;;		Unchanged: 0/0
+  1391 ;; Data sizes:     COMMON   BANK0
+  1392 ;;      Params:         0       0
+  1393 ;;      Locals:         0       4
+  1394 ;;      Temps:          0       2
+  1395 ;;      Totals:         0       6
+  1396 ;;Total ram usage:        6 bytes
+  1397 ;; Hardware stack levels used:    1
+  1398 ;; Hardware stack levels required when called:    1
+  1399 ;; This function calls:
+  1400 ;;		_GetADCValue
+  1401 ;;		_my_delay_ms
+  1402 ;; This function is called by:
+  1403 ;;		_main
+  1404 ;; This function uses a non-reentrant model
+  1405 ;;
+  1406                           
+  1407                           
+  1408                           ;psect for function _forwardBackStepByStep
+  1409  0338                     _forwardBackStepByStep:	
+  1410                           
+  1411                           ;incstack = 0
+  1412                           ; Regs used in _forwardBackStepByStep: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+  1413                           ;forwardBackStepByStep@flage stored from wreg
+  1414  0338  1283               	bcf	3,5	;RP0=0, select bank0
+  1415  0339  00A7               	movwf	forwardBackStepByStep@flage
+  1416                           
+  1417                           ;main.c: 226: unsigned char count=5;
+  1418  033A  3005               	movlw	5
+  1419  033B  00A5               	movwf	??_forwardBackStepByStep
+  1420  033C  0825               	movf	??_forwardBackStepByStep,w
+  1421  033D  00A8               	movwf	forwardBackStepByStep@count
+  1422  033E                     l68:	
+  1423                           ;main.c: 227: while(count--){
+  1424                           
+  1425  033E  3001               	movlw	1
+  1426  033F  02A8               	subwf	forwardBackStepByStep@count,f
+  1427  0340  0A28               	incf	forwardBackStepByStep@count,w
+  1428  0341  1903               	btfsc	3,2
+  1429  0342  2B97               	goto	l1236
+  1430                           
+  1431                           ;main.c: 228: for(unsigned char i =5 ; i>0 ;i--){
+  1432  0343  3005               	movlw	5
+  1433  0344  00A5               	movwf	??_forwardBackStepByStep
+  1434  0345  0825               	movf	??_forwardBackStepByStep,w
+  1435  0346  00A9               	movwf	forwardBackStepByStep@i
+  1436  0347  0829               	movf	forwardBackStepByStep@i,w
+  1437  0348  1903               	btfsc	3,2
+  1438  0349  2B92               	goto	l1234
+  1439  034A                     l1214:	
+  1440                           
+  1441                           ;main.c: 229: if(i ==3)
+  1442  034A  3003               	movlw	3
+  1443  034B  0629               	xorwf	forwardBackStepByStep@i,w
+  1444  034C  1D03               	btfss	3,2
+  1445  034D  2B78               	goto	l1224
+  1446                           
+  1447                           ;main.c: 230: i=2;
+  1448  034E  3002               	movlw	2
+  1449  034F  00A5               	movwf	??_forwardBackStepByStep
+  1450  0350  0825               	movf	??_forwardBackStepByStep,w
+  1451  0351  00A9               	movwf	forwardBackStepByStep@i
+  1452                           
+  1453                           ;main.c: 231: switch(flage){
+  1454  0352  2B78               	goto	l1224
+  1455  0353                     l1218:	
+  1456                           ;main.c: 232: case 0: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO |=(1<<i); break;
+  1457                           
+  1458  0353  30C9               	movlw	201
+  1459  0354  00A5               	movwf	??_forwardBackStepByStep
+  1460  0355  0825               	movf	??_forwardBackStepByStep,w
+  1461  0356  0585               	andwf	5,f	;volatile
+  1462  0357  3001               	movlw	1
+  1463  0358  00A5               	movwf	??_forwardBackStepByStep
+  1464  0359  0A29               	incf	forwardBackStepByStep@i,w
+  1465  035A  2B5D               	goto	u864
+  1466  035B                     u865:	
+  1467  035B  1003               	clrc
+  1468  035C  0DA5               	rlf	??_forwardBackStepByStep,f
+  1469  035D                     u864:	
+  1470  035D  3EFF               	addlw	-1
+  1471  035E  1D03               	skipz
+  1472  035F  2B5B               	goto	u865
+  1473  0360  0825               	movf	??_forwardBackStepByStep,w
+  1474  0361  00A6               	movwf	??_forwardBackStepByStep+1
+  1475  0362  0826               	movf	??_forwardBackStepByStep+1,w
+  1476  0363  0485               	iorwf	5,f	;volatile
+  1477  0364  2B80               	goto	l1226
+  1478  0365                     l1220:	
+  1479                           ;main.c: 233: case 1 : GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO &=~(1<<i); break;
+  1480                           
+  1481  0365  3036               	movlw	54
+  1482  0366  00A5               	movwf	??_forwardBackStepByStep
+  1483  0367  0825               	movf	??_forwardBackStepByStep,w
+  1484  0368  0485               	iorwf	5,f	;volatile
+  1485  0369  3001               	movlw	1
+  1486  036A  00A5               	movwf	??_forwardBackStepByStep
+  1487  036B  0A29               	incf	forwardBackStepByStep@i,w
+  1488  036C  2B6F               	goto	u874
+  1489  036D                     u875:	
+  1490  036D  1003               	clrc
+  1491  036E  0DA5               	rlf	??_forwardBackStepByStep,f
+  1492  036F                     u874:	
+  1493  036F  3EFF               	addlw	-1
+  1494  0370  1D03               	skipz
+  1495  0371  2B6D               	goto	u875
+  1496  0372  0825               	movf	??_forwardBackStepByStep,w
+  1497  0373  3AFF               	xorlw	255
+  1498  0374  00A6               	movwf	??_forwardBackStepByStep+1
+  1499  0375  0826               	movf	??_forwardBackStepByStep+1,w
+  1500  0376  0585               	andwf	5,f	;volatile
+  1501                           
+  1502                           ;main.c: 234: }
+  1503  0377  2B80               	goto	l1226
+  1504  0378                     l1224:	
+  1505  0378  0827               	movf	forwardBackStepByStep@flage,w
+  1506                           
+  1507                           ; Switch size 1, requested type "space"
+  1508                           ; Number of cases is 2, Range of values is 0 to 1
+  1509                           ; switch strategies available:
+  1510                           ; Name         Instructions Cycles
+  1511                           ; simple_byte            7     4 (average)
+  1512                           ; direct_byte            8     6 (fixed)
+  1513                           ; jumptable            260     6 (fixed)
+  1514                           ;	Chosen strategy is simple_byte
+  1515  0379  3A00               	xorlw	0	; case 0
+  1516  037A  1903               	skipnz
+  1517  037B  2B53               	goto	l1218
+  1518  037C  3A01               	xorlw	1	; case 1
+  1519  037D  1903               	skipnz
+  1520  037E  2B65               	goto	l1220
+  1521  037F  2B80               	goto	l1226
+  1522  0380                     l1226:	
+  1523                           
+  1524                           ;main.c: 240: delay_val=GetADCValue(1<<0);
+  1525  0380  3001               	movlw	1
+  1526  0381  20F9               	fcall	_GetADCValue
+  1527  0382  1283               	bcf	3,5	;RP0=0, select bank0
+  1528  0383  0821               	movf	?_GetADCValue+1,w
+  1529  0384  00AE               	movwf	_delay_val+1
+  1530  0385  0820               	movf	?_GetADCValue,w
+  1531  0386  00AD               	movwf	_delay_val
+  1532                           
+  1533                           ;main.c: 241: my_delay_ms(delay_val);
+  1534  0387  082E               	movf	_delay_val+1,w
+  1535  0388  00A1               	movwf	my_delay_ms@n+1
+  1536  0389  082D               	movf	_delay_val,w
+  1537  038A  00A0               	movwf	my_delay_ms@n
+  1538  038B  207B               	fcall	_my_delay_ms
+  1539  038C  3001               	movlw	1
+  1540  038D  1283               	bcf	3,5	;RP0=0, select bank0
+  1541  038E  02A9               	subwf	forwardBackStepByStep@i,f
+  1542  038F  0829               	movf	forwardBackStepByStep@i,w
+  1543  0390  1D03               	btfss	3,2
+  1544  0391  2B4A               	goto	l1214
+  1545  0392                     l1234:	
+  1546                           
+  1547                           ;main.c: 243: }
+  1548                           ;main.c: 244: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));
+  1549  0392  30C9               	movlw	201
+  1550  0393  00A5               	movwf	??_forwardBackStepByStep
+  1551  0394  0825               	movf	??_forwardBackStepByStep,w
+  1552  0395  0585               	andwf	5,f	;volatile
+  1553  0396  2B3E               	goto	l68
+  1554  0397                     l1236:	
+  1555                           
+  1556                           ;main.c: 246: }
+  1557                           ;main.c: 247: count=5;
+  1558  0397  3005               	movlw	5
+  1559  0398  00A5               	movwf	??_forwardBackStepByStep
+  1560  0399  0825               	movf	??_forwardBackStepByStep,w
+  1561  039A  00A8               	movwf	forwardBackStepByStep@count
+  1562  039B                     l78:	
+  1563                           ;main.c: 248: while(count--){
+  1564                           
+  1565  039B  3001               	movlw	1
+  1566  039C  02A8               	subwf	forwardBackStepByStep@count,f
+  1567  039D  0A28               	incf	forwardBackStepByStep@count,w
+  1568  039E  1903               	btfsc	3,2
+  1569  039F  2BF6               	goto	l1264
+  1570                           
+  1571                           ;main.c: 249: for(unsigned char i =1 ; i<6 ;i++){
+  1572  03A0  01AA               	clrf	forwardBackStepByStep@i_79
+  1573  03A1  0AAA               	incf	forwardBackStepByStep@i_79,f
+  1574  03A2  3006               	movlw	6
+  1575  03A3  022A               	subwf	forwardBackStepByStep@i_79,w
+  1576  03A4  1803               	btfsc	3,0
+  1577  03A5  2BF1               	goto	l1262
+  1578  03A6                     l1242:	
+  1579                           
+  1580                           ;main.c: 250: if(i ==3)
+  1581  03A6  3003               	movlw	3
+  1582  03A7  062A               	xorwf	forwardBackStepByStep@i_79,w
+  1583  03A8  1D03               	btfss	3,2
+  1584  03A9  2BD4               	goto	l1252
+  1585                           
+  1586                           ;main.c: 251: i=4;
+  1587  03AA  3004               	movlw	4
+  1588  03AB  00A5               	movwf	??_forwardBackStepByStep
+  1589  03AC  0825               	movf	??_forwardBackStepByStep,w
+  1590  03AD  00AA               	movwf	forwardBackStepByStep@i_79
+  1591                           
+  1592                           ;main.c: 252: switch(flage){
+  1593  03AE  2BD4               	goto	l1252
+  1594  03AF                     l1246:	
+  1595                           ;main.c: 253: case 0: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO |=(1<<i); break;
+  1596                           
+  1597  03AF  30C9               	movlw	201
+  1598  03B0  00A5               	movwf	??_forwardBackStepByStep
+  1599  03B1  0825               	movf	??_forwardBackStepByStep,w
+  1600  03B2  0585               	andwf	5,f	;volatile
+  1601  03B3  3001               	movlw	1
+  1602  03B4  00A5               	movwf	??_forwardBackStepByStep
+  1603  03B5  0A2A               	incf	forwardBackStepByStep@i_79,w
+  1604  03B6  2BB9               	goto	u924
+  1605  03B7                     u925:	
+  1606  03B7  1003               	clrc
+  1607  03B8  0DA5               	rlf	??_forwardBackStepByStep,f
+  1608  03B9                     u924:	
+  1609  03B9  3EFF               	addlw	-1
+  1610  03BA  1D03               	skipz
+  1611  03BB  2BB7               	goto	u925
+  1612  03BC  0825               	movf	??_forwardBackStepByStep,w
+  1613  03BD  00A6               	movwf	??_forwardBackStepByStep+1
+  1614  03BE  0826               	movf	??_forwardBackStepByStep+1,w
+  1615  03BF  0485               	iorwf	5,f	;volatile
+  1616  03C0  2BDC               	goto	l1254
+  1617  03C1                     l1248:	
+  1618                           ;main.c: 254: case 1 : GPIO |=((1<<5)|(1<<4)|(1<<2)|(1<<1));GPIO &=~(1<<i); break;
+  1619                           
+  1620  03C1  3036               	movlw	54
+  1621  03C2  00A5               	movwf	??_forwardBackStepByStep
+  1622  03C3  0825               	movf	??_forwardBackStepByStep,w
+  1623  03C4  0485               	iorwf	5,f	;volatile
+  1624  03C5  3001               	movlw	1
+  1625  03C6  00A5               	movwf	??_forwardBackStepByStep
+  1626  03C7  0A2A               	incf	forwardBackStepByStep@i_79,w
+  1627  03C8  2BCB               	goto	u934
+  1628  03C9                     u935:	
+  1629  03C9  1003               	clrc
+  1630  03CA  0DA5               	rlf	??_forwardBackStepByStep,f
+  1631  03CB                     u934:	
+  1632  03CB  3EFF               	addlw	-1
+  1633  03CC  1D03               	skipz
+  1634  03CD  2BC9               	goto	u935
+  1635  03CE  0825               	movf	??_forwardBackStepByStep,w
+  1636  03CF  3AFF               	xorlw	255
+  1637  03D0  00A6               	movwf	??_forwardBackStepByStep+1
+  1638  03D1  0826               	movf	??_forwardBackStepByStep+1,w
+  1639  03D2  0585               	andwf	5,f	;volatile
+  1640                           
+  1641                           ;main.c: 255: }
+  1642  03D3  2BDC               	goto	l1254
+  1643  03D4                     l1252:	
+  1644  03D4  0827               	movf	forwardBackStepByStep@flage,w
+  1645                           
+  1646                           ; Switch size 1, requested type "space"
+  1647                           ; Number of cases is 2, Range of values is 0 to 1
+  1648                           ; switch strategies available:
+  1649                           ; Name         Instructions Cycles
+  1650                           ; simple_byte            7     4 (average)
+  1651                           ; direct_byte            8     6 (fixed)
+  1652                           ; jumptable            260     6 (fixed)
+  1653                           ;	Chosen strategy is simple_byte
+  1654  03D5  3A00               	xorlw	0	; case 0
+  1655  03D6  1903               	skipnz
+  1656  03D7  2BAF               	goto	l1246
+  1657  03D8  3A01               	xorlw	1	; case 1
+  1658  03D9  1903               	skipnz
+  1659  03DA  2BC1               	goto	l1248
+  1660  03DB  2BDC               	goto	l1254
+  1661  03DC                     l1254:	
+  1662                           
+  1663                           ;main.c: 261: delay_val=GetADCValue(1<<0);
+  1664  03DC  3001               	movlw	1
+  1665  03DD  20F9               	fcall	_GetADCValue
+  1666  03DE  1283               	bcf	3,5	;RP0=0, select bank0
+  1667  03DF  0821               	movf	?_GetADCValue+1,w
+  1668  03E0  00AE               	movwf	_delay_val+1
+  1669  03E1  0820               	movf	?_GetADCValue,w
+  1670  03E2  00AD               	movwf	_delay_val
+  1671                           
+  1672                           ;main.c: 262: my_delay_ms(delay_val);
+  1673  03E3  082E               	movf	_delay_val+1,w
+  1674  03E4  00A1               	movwf	my_delay_ms@n+1
+  1675  03E5  082D               	movf	_delay_val,w
+  1676  03E6  00A0               	movwf	my_delay_ms@n
+  1677  03E7  207B               	fcall	_my_delay_ms
+  1678  03E8  3001               	movlw	1
+  1679  03E9  1283               	bcf	3,5	;RP0=0, select bank0
+  1680  03EA  00A5               	movwf	??_forwardBackStepByStep
+  1681  03EB  0825               	movf	??_forwardBackStepByStep,w
+  1682  03EC  07AA               	addwf	forwardBackStepByStep@i_79,f
+  1683  03ED  3006               	movlw	6
+  1684  03EE  022A               	subwf	forwardBackStepByStep@i_79,w
+  1685  03EF  1C03               	skipc
+  1686  03F0  2BA6               	goto	l1242
+  1687  03F1                     l1262:	
+  1688                           
+  1689                           ;main.c: 264: }
+  1690                           ;main.c: 265: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));
+  1691  03F1  30C9               	movlw	201
+  1692  03F2  00A5               	movwf	??_forwardBackStepByStep
+  1693  03F3  0825               	movf	??_forwardBackStepByStep,w
+  1694  03F4  0585               	andwf	5,f	;volatile
+  1695  03F5  2B9B               	goto	l78
+  1696  03F6                     l1264:	
+  1697                           
+  1698                           ;main.c: 267: }
+  1699                           ;main.c: 268: GPIO &=~((1<<5)|(1<<4)|(1<<2)|(1<<1));
+  1700  03F6  30C9               	movlw	201
+  1701  03F7  00A5               	movwf	??_forwardBackStepByStep
+  1702  03F8  0825               	movf	??_forwardBackStepByStep,w
+  1703  03F9  0585               	andwf	5,f	;volatile
+  1704  03FA  0008               	return
+  1705  03FB                     __end_of_forwardBackStepByStep:	
+  1706                           
+  1707                           	psect	text6
+  1708  007B                     __ptext6:	
+  1709 ;; *************** function _my_delay_ms *****************
+  1710 ;; Defined at:
+  1711 ;;		line 217 in file "main.c"
+  1712 ;; Parameters:    Size  Location     Type
+  1713 ;;  n               2    0[BANK0 ] unsigned short 
+  1714 ;; Auto vars:     Size  Location     Type
+  1715 ;;		None
+  1716 ;; Return value:  Size  Location     Type
+  1717 ;;                  1    wreg      void 
+  1718 ;; Registers used:
+  1719 ;;		wreg, status,2, status,0
+  1720 ;; Tracked objects:
+  1721 ;;		On entry : 0/0
+  1722 ;;		On exit  : 0/0
+  1723 ;;		Unchanged: 0/0
+  1724 ;; Data sizes:     COMMON   BANK0
+  1725 ;;      Params:         0       2
+  1726 ;;      Locals:         0       0
+  1727 ;;      Temps:          0       1
+  1728 ;;      Totals:         0       3
+  1729 ;;Total ram usage:        3 bytes
+  1730 ;; Hardware stack levels used:    1
+  1731 ;; This function calls:
+  1732 ;;		Nothing
+  1733 ;; This function is called by:
+  1734 ;;		_forwardBackStepByStep
+  1735 ;;		_forwardBackStepByStepReverse
+  1736 ;;		_togaleLeds
+  1737 ;;		_forwardBackwordLightOneOnlyAndRevese
+  1738 ;;		_forwardBackwordLightOneOnly
+  1739 ;;		_forwardBackwordLightOneByOne
+  1740 ;; This function uses a non-reentrant model
+  1741 ;;
+  1742                           
+  1743                           
+  1744                           ;psect for function _my_delay_ms
+  1745  007B                     _my_delay_ms:	
+  1746  007B                     l1122:	
+  1747                           ;main.c: 218: while(n--) {
+  1748                           
+  1749                           ;incstack = 0
+  1750                           ; Regs used in _my_delay_ms: [wreg+status,2+status,0]
+  1751                           
+  1752  007B  3001               	movlw	1
+  1753  007C  1283               	bcf	3,5	;RP0=0, select bank0
+  1754  007D  02A0               	subwf	my_delay_ms@n,f
+  1755  007E  3000               	movlw	0
+  1756  007F  1C03               	skipc
+  1757  0080  03A1               	decf	my_delay_ms@n+1,f
+  1758  0081  02A1               	subwf	my_delay_ms@n+1,f
+  1759  0082  0A20               	incf	my_delay_ms@n,w
+  1760  0083  1903               	btfsc	3,2
+  1761  0084  0A21               	incf	my_delay_ms@n+1,w
+  1762  0085  1903               	btfsc	3,2
+  1763  0086  0008               	return
+  1764                           
+  1765                           ;main.c: 219: _delay((unsigned long)((1)*(4000000/4000.0)));
+  1766  0087  30F9               	movlw	249
+  1767  0088  1283               	bcf	3,5	;RP0=0, select bank0
+  1768  0089  00A2               	movwf	??_my_delay_ms
+  1769  008A                     u1377:	
+  1770  008A  0000               	nop
+  1771  008B  0BA2               	decfsz	??_my_delay_ms,f
+  1772  008C  288A               	goto	u1377
+  1773  008D  288E               	nop2	;nop
+  1774  008E  0000               	nop
+  1775  008F  287B               	goto	l1122
+  1776  0090                     __end_of_my_delay_ms:	
+  1777                           
+  1778                           	psect	text7
+  1779  00F9                     __ptext7:	
+  1780 ;; *************** function _GetADCValue *****************
+  1781 ;; Defined at:
+  1782 ;;		line 187 in file "main.c"
+  1783 ;; Parameters:    Size  Location     Type
+  1784 ;;  Channel         1    wreg     unsigned char 
+  1785 ;; Auto vars:     Size  Location     Type
+  1786 ;;  Channel         1    4[BANK0 ] unsigned char 
+  1787 ;; Return value:  Size  Location     Type
+  1788 ;;                  2    0[BANK0 ] unsigned int 
+  1789 ;; Registers used:
+  1790 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+  1791 ;; Tracked objects:
+  1792 ;;		On entry : 0/0
+  1793 ;;		On exit  : 0/0
+  1794 ;;		Unchanged: 0/0
+  1795 ;; Data sizes:     COMMON   BANK0
+  1796 ;;      Params:         0       2
+  1797 ;;      Locals:         0       1
+  1798 ;;      Temps:          0       2
+  1799 ;;      Totals:         0       5
+  1800 ;;Total ram usage:        5 bytes
+  1801 ;; Hardware stack levels used:    1
+  1802 ;; This function calls:
+  1803 ;;		Nothing
+  1804 ;; This function is called by:
+  1805 ;;		_forwardBackStepByStep
+  1806 ;;		_forwardBackStepByStepReverse
+  1807 ;;		_togaleLeds
+  1808 ;;		_forwardBackwordLightOneOnlyAndRevese
+  1809 ;;		_forwardBackwordLightOneOnly
+  1810 ;;		_forwardBackwordLightOneByOne
+  1811 ;; This function uses a non-reentrant model
+  1812 ;;
+  1813                           
+  1814                           
+  1815                           ;psect for function _GetADCValue
+  1816  00F9                     _GetADCValue:	
+  1817                           
+  1818                           ;incstack = 0
+  1819                           ; Regs used in _GetADCValue: [wreg-fsr0h+status,2+status,0]
+  1820                           ;GetADCValue@Channel stored from wreg
+  1821  00F9  1283               	bcf	3,5	;RP0=0, select bank0
+  1822  00FA  00A4               	movwf	GetADCValue@Channel
+  1823                           
+  1824                           ;main.c: 189: ADCON0 &= 0xf3;
+  1825  00FB  30F3               	movlw	243
+  1826  00FC  00A2               	movwf	??_GetADCValue
+  1827  00FD  0822               	movf	??_GetADCValue,w
+  1828  00FE  059F               	andwf	31,f	;volatile
+  1829                           
+  1830                           ;main.c: 191: switch(Channel)
+  1831  00FF  290E               	goto	l1108
+  1832  0100                     l1098:	
+  1833                           ;main.c: 192: {
+  1834                           ;main.c: 193: case 1<<0: ADCON0 |= 0x00; break;
+  1835                           
+  1836  0100  081F               	movf	31,w	;volatile
+  1837  0101  291C               	goto	l1110
+  1838  0102                     l52:	
+  1839                           ;main.c: 194: case 1<<1: ADCON0 |= 0x04; break;
+  1840                           
+  1841  0102  151F               	bsf	31,2	;volatile
+  1842  0103  291C               	goto	l1110
+  1843  0104                     l53:	
+  1844                           ;main.c: 195: case 1<<2: ADCON0 |= 0x08; break;
+  1845                           
+  1846  0104  159F               	bsf	31,3	;volatile
+  1847  0105  291C               	goto	l1110
+  1848  0106                     l1100:	
+  1849                           ;main.c: 196: case 1<<3: ADCON0 |= 0x0c; break;
+  1850                           
+  1851  0106  300C               	movlw	12
+  1852  0107  00A2               	movwf	??_GetADCValue
+  1853  0108  0822               	movf	??_GetADCValue,w
+  1854  0109  049F               	iorwf	31,f	;volatile
+  1855  010A  291C               	goto	l1110
+  1856  010B                     l1102:	
+  1857                           ;main.c: 198: default: return 0;
+  1858                           
+  1859  010B  01A0               	clrf	?_GetADCValue
+  1860  010C  01A1               	clrf	?_GetADCValue+1
+  1861  010D  0008               	return
+  1862  010E                     l1108:	
+  1863                           ;main.c: 199: }
+  1864                           
+  1865  010E  0824               	movf	GetADCValue@Channel,w
+  1866                           
+  1867                           ; Switch size 1, requested type "space"
+  1868                           ; Number of cases is 4, Range of values is 1 to 8
+  1869                           ; switch strategies available:
+  1870                           ; Name         Instructions Cycles
+  1871                           ; simple_byte           13     7 (average)
+  1872                           ; direct_byte           17     9 (fixed)
+  1873                           ; jumptable            263     9 (fixed)
+  1874                           ;	Chosen strategy is simple_byte
+  1875  010F  3A01               	xorlw	1	; case 1
+  1876  0110  1903               	skipnz
+  1877  0111  2900               	goto	l1098
+  1878  0112  3A03               	xorlw	3	; case 2
+  1879  0113  1903               	skipnz
+  1880  0114  2902               	goto	l52
+  1881  0115  3A06               	xorlw	6	; case 4
+  1882  0116  1903               	skipnz
+  1883  0117  2904               	goto	l53
+  1884  0118  3A0C               	xorlw	12	; case 8
+  1885  0119  1903               	skipnz
+  1886  011A  2906               	goto	l1100
+  1887  011B  290B               	goto	l1102
+  1888  011C                     l1110:	
+  1889                           
+  1890                           ;main.c: 201: _delay((unsigned long)((10)*(4000000/4000.0)));
+  1891  011C  300D               	movlw	13
+  1892  011D  00A3               	movwf	??_GetADCValue+1
+  1893  011E  30FB               	movlw	251
+  1894  011F  00A2               	movwf	??_GetADCValue
+  1895  0120                     u1387:	
+  1896  0120  0BA2               	decfsz	??_GetADCValue,f
+  1897  0121  2920               	goto	u1387
+  1898  0122  0BA3               	decfsz	??_GetADCValue+1,f
+  1899  0123  2920               	goto	u1387
+  1900  0124  2925               	nop2
+  1901                           
+  1902                           ;main.c: 203: GO_nDONE = 1;
+  1903  0125  1283               	bcf	3,5	;RP0=0, select bank0
+  1904  0126  149F               	bsf	31,1	;volatile
+  1905  0127                     l57:	
+  1906                           ;main.c: 205: while(GO_nDONE);
+  1907                           
+  1908  0127  189F               	btfsc	31,1	;volatile
+  1909  0128  2927               	goto	l57
+  1910                           
+  1911                           ;main.c: 207: return ((ADRESH<<8)+ADRESL);
+  1912  0129  081E               	movf	30,w	;volatile
+  1913  012A  00A1               	movwf	?_GetADCValue+1
+  1914  012B  1683               	bsf	3,5	;RP0=1, select bank1
+  1915  012C  081E               	movf	30,w	;volatile
+  1916  012D  1283               	bcf	3,5	;RP0=0, select bank0
+  1917  012E  00A0               	movwf	?_GetADCValue
+  1918  012F  0008               	return
+  1919  0130                     __end_of_GetADCValue:	
+  1920                           
+  1921                           	psect	text8
+  1922  0090                     __ptext8:	
+  1923 ;; *************** function _InitADC *****************
+  1924 ;; Defined at:
+  1925 ;;		line 166 in file "main.c"
+  1926 ;; Parameters:    Size  Location     Type
+  1927 ;;  Channel         1    wreg     unsigned char 
+  1928 ;; Auto vars:     Size  Location     Type
+  1929 ;;  Channel         1    1[BANK0 ] unsigned char 
+  1930 ;; Return value:  Size  Location     Type
+  1931 ;;                  1    wreg      void 
+  1932 ;; Registers used:
+  1933 ;;		wreg, status,2, status,0
+  1934 ;; Tracked objects:
+  1935 ;;		On entry : 0/0
+  1936 ;;		On exit  : 0/0
+  1937 ;;		Unchanged: 0/0
+  1938 ;; Data sizes:     COMMON   BANK0
+  1939 ;;      Params:         0       0
+  1940 ;;      Locals:         0       1
+  1941 ;;      Temps:          0       1
+  1942 ;;      Totals:         0       2
+  1943 ;;Total ram usage:        2 bytes
+  1944 ;; Hardware stack levels used:    1
+  1945 ;; This function calls:
+  1946 ;;		Nothing
+  1947 ;; This function is called by:
+  1948 ;;		_main
+  1949 ;; This function uses a non-reentrant model
+  1950 ;;
+  1951                           
+  1952                           
+  1953                           ;psect for function _InitADC
+  1954  0090                     _InitADC:	
+  1955                           
+  1956                           ;incstack = 0
+  1957                           ; Regs used in _InitADC: [wreg+status,2+status,0]
+  1958                           ;InitADC@Channel stored from wreg
+  1959  0090  1283               	bcf	3,5	;RP0=0, select bank0
+  1960  0091  00A1               	movwf	InitADC@Channel
+  1961                           
+  1962                           ;main.c: 168: ANSEL = 0x10;
+  1963  0092  3010               	movlw	16
+  1964  0093  1683               	bsf	3,5	;RP0=1, select bank1
+  1965  0094  009F               	movwf	31	;volatile
+  1966                           
+  1967                           ;main.c: 169: ANSEL |= Channel;
+  1968  0095  1283               	bcf	3,5	;RP0=0, select bank0
+  1969  0096  0821               	movf	InitADC@Channel,w
+  1970  0097  00A0               	movwf	??_InitADC
+  1971  0098  0820               	movf	??_InitADC,w
+  1972  0099  1683               	bsf	3,5	;RP0=1, select bank1
+  1973  009A  049F               	iorwf	31,f	;volatile
+  1974                           
+  1975                           ;main.c: 171: TRISIO |= Channel;
+  1976  009B  1283               	bcf	3,5	;RP0=0, select bank0
+  1977  009C  0821               	movf	InitADC@Channel,w
+  1978  009D  00A0               	movwf	??_InitADC
+  1979  009E  0820               	movf	??_InitADC,w
+  1980  009F  1683               	bsf	3,5	;RP0=1, select bank1
+  1981  00A0  0485               	iorwf	5,f	;volatile
+  1982                           
+  1983                           ;main.c: 172: ADCON0 = 0x81;
+  1984  00A1  3081               	movlw	129
+  1985  00A2  1283               	bcf	3,5	;RP0=0, select bank0
+  1986  00A3  009F               	movwf	31	;volatile
+  1987                           
+  1988                           ;main.c: 173: CMCON = 0x07;
+  1989  00A4  3007               	movlw	7
+  1990  00A5  0099               	movwf	25	;volatile
+  1991                           
+  1992                           ;main.c: 174: VRCON = 0x00;
+  1993  00A6  1683               	bsf	3,5	;RP0=1, select bank1
+  1994  00A7  0199               	clrf	25	;volatile
+  1995  00A8  0008               	return
+  1996  00A9                     __end_of_InitADC:	
+  1997  005E                     btemp	set	94	;btemp
+  1998  005E                     wtemp	set	94
+  1999  005E                     wtemp0	set	94
+  2000  0060                     wtemp1	set	96
+  2001  0062                     wtemp2	set	98
+  2002  0064                     wtemp3	set	100
+  2003  0066                     wtemp4	set	102
+  2004  0068                     wtemp5	set	104
+  2005  005F                     wtemp6	set	95
+  2006  005E                     ttemp	set	94
+  2007  005E                     ttemp0	set	94
+  2008  0061                     ttemp1	set	97
+  2009  0064                     ttemp2	set	100
+  2010  0067                     ttemp3	set	103
+  2011  005F                     ttemp4	set	95
+  2012  005E                     ltemp	set	94
+  2013  005E                     ltemp0	set	94
+  2014  0062                     ltemp1	set	98
+  2015  0066                     ltemp2	set	102
+  2016  0060                     ltemp3	set	96
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         2
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON            0      0       0
+    BANK0            62     13      15
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    _main->_togaleLeds
+    _togaleLeds->_GetADCValue
+    _forwardBackwordLightOneOnlyAndRevese->_GetADCValue
+    _forwardBackStepByStepReverse->_GetADCValue
+    _forwardBackStepByStep->_GetADCValue
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0    4172
+                                             12 BANK0      1     1      0
+                            _InitADC
+              _forwardBackStepByStep
+       _forwardBackStepByStepReverse
+_forwardBackwordLightOneOnlyAndReves
+                          _gpio_init
+                         _togaleLeds
+ ---------------------------------------------------------------------------------
+ (1) _togaleLeds                                           7     6      1    1186
+                                              5 BANK0      7     6      1
+                        _GetADCValue
+                        _my_delay_ms
+ ---------------------------------------------------------------------------------
+ (1) _gpio_init                                            1     1      0       0
+                                              0 BANK0      1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _forwardBackwordLightOneOnlyAndRevese                 6     6      0     973
+                                              5 BANK0      6     6      0
+                        _GetADCValue
+                        _my_delay_ms
+ ---------------------------------------------------------------------------------
+ (1) _forwardBackStepByStepReverse                         6     6      0     973
+                                              5 BANK0      6     6      0
+                        _GetADCValue
+                        _my_delay_ms
+ ---------------------------------------------------------------------------------
+ (1) _forwardBackStepByStep                                6     6      0     996
+                                              5 BANK0      6     6      0
+                        _GetADCValue
+                        _my_delay_ms
+ ---------------------------------------------------------------------------------
+ (2) _my_delay_ms                                          3     1      2     658
+                                              0 BANK0      3     1      2
+ ---------------------------------------------------------------------------------
+ (2) _GetADCValue                                          5     3      2      22
+                                              0 BANK0      5     3      2
+ ---------------------------------------------------------------------------------
+ (1) _InitADC                                              2     2      0      44
+                                              0 BANK0      2     2      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _InitADC
+   _forwardBackStepByStep
+     _GetADCValue
+     _my_delay_ms
+   _forwardBackStepByStepReverse
+     _GetADCValue
+     _my_delay_ms
+   _forwardBackwordLightOneOnlyAndRevese
+     _GetADCValue
+     _my_delay_ms
+   _gpio_init
+   _togaleLeds
+     _GetADCValue
+     _my_delay_ms
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            0      0       0       0        0.0%
+EEDATA              80      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       0       2        0.0%
+BITBANK0            3E      0       0       3        0.0%
+BANK0               3E      D       F       4       24.2%
+ABS                  0      0       F       5        0.0%
+DATA                 0      0       F       6        0.0%
+
+
+Microchip Technology PIC Macro Assembler V1.36 build -262312587 
+Symbol Table                                                                                   Fri Aug 27 14:01:32 2021
+
+                                            pc 0002                                    __CFG_CP$OFF 0000  
+                                           l52 0102                                             l53 0104  
+                                           l57 0127                                             l68 033E  
+                                           l78 039B                                             l94 0229  
+                                           fsr 0004                                            l176 0183  
+                                 __CFG_CPD$OFF 0000                                            u804 019E  
+                                          u805 019C                                            u814 01B0  
+                                          u815 01AE                                            u744 0157  
+                                          u745 0155                                            u754 0169  
+                                          u755 0167                                            u924 03B9  
+                                          u925 03B7                                            u934 03CB  
+                                          u935 03C9                                            u864 035D  
+                                          u865 035B                                            u874 036F  
+                                          u875 036D                                            u984 01F4  
+                                          u985 01F2                                            u994 0206  
+                                          u995 0204                                           S1546 0001  
+                                         l1100 0106                                           l1102 010B  
+                                         l1110 011C                                           l1122 007B  
+                                         l1202 0136                                           l1108 010E  
+                                         l1220 0365                                           l1204 01CA  
+                                         l1214 034A                                           l1310 0265  
+                                         l1302 0238                                           l1224 0378  
+                                         l1320 0277                                           l1304 024A  
+                                         l1242 03A6                                           l1226 0380  
+                                         l1218 0353                                           l1234 0392  
+                                         l1170 015F                                           l1162 0142  
+                                         l1330 028C                                           l1252 03D4  
+                                         l1236 0397                                           l1308 025D  
+                                         l1172 0171                                           l1332 028E  
+                                         l1324 0283                                           l1254 03DC  
+                                         l1246 03AF                                           l1262 03F1  
+                                         l1318 01D5                                           l1166 014A  
+                                         l1350 02C0                                           l1326 0288  
+                                         l1406 00D3                                           l1264 03F6  
+                                         l1248 03C1                                           l1280 01FC  
+                                         l1192 01A6                                           l1352 02C6  
+                                         l1328 028A                                           l1336 0293  
+                                         l1098 0100                                           l1274 01E1  
+                                         l1194 01B8                                           l1284 020F  
+                                         l1188 0191                                           l1380 030B  
+                                         l1348 02B3                                           l1356 02CB  
+                                         l1286 0217                                           l1278 01EA  
+                                         l1382 0311                                           l1358 02D6  
+                                         l1366 029E                                           l1368 02E6  
+                                         l1378 02FE                                           l1386 0316  
+                                         l1388 0321                                           l1396 02EA  
+                                         l1398 0333                                           u1034 0242  
+                                         u1035 0240                                           u1044 0254  
+                                         u1045 0252                                           u1144 0304  
+                                         u1145 0302                                           u1094 02B9  
+                                         u1095 02B7                                           u1377 008A  
+                                         _GPIO 0005                                           u1387 0120  
+                                         _main 00D0                                           btemp 005E  
+                                         ltemp 005E                                    _GetADCValue 00F9  
+                                         start 0000                                           ttemp 005E  
+                                         wtemp 005E                  forwardBackStepByStepReverse@i 0029  
+                              __end_of_InitADC 00A9                      togaleLeds@fristTogaleOrNo 0025  
+                                        ?_main 0020                                  __CFG_WDTE$OFF 0000  
+                                        _CMCON 0019                                          _ANSEL 009F  
+                                        _VRCON 0099                                 __CFG_BOREN$OFF 0000  
+                                        pclath 000A                                          ltemp0 005E  
+                                        ltemp1 0062                                          ltemp2 0066  
+                                        ltemp3 0060                                          ttemp0 005E  
+                                        ttemp1 0061                                          ttemp2 0064  
+                                        ttemp3 0067                                          ttemp4 005F  
+                                        status 0003                                          wtemp0 005E  
+                                        wtemp1 0060                                          wtemp2 0062  
+                                        wtemp3 0064                                          wtemp4 0066  
+                                        wtemp5 0068                                          wtemp6 005F  
+                               __CFG_MCLRE$OFF 0000                                 togaleLeds@i_90 002B  
+                              __initialization 03FB                                   __end_of_main 00F9  
+ __end_of_forwardBackwordLightOneOnlyAndRevese 01CF  __size_of_forwardBackwordLightOneOnlyAndRevese 009F  
+       ??_forwardBackwordLightOneOnlyAndRevese 0025          ?_forwardBackwordLightOneOnlyAndRevese 0020  
+         _forwardBackwordLightOneOnlyAndRevese 0130                                         ??_main 002C  
+                                       _ADCON0 001F                                         _ADRESH 001E  
+                                       _ADRESL 009E                                   ?_my_delay_ms 0020  
+                                       _TRISIO 0085                                      ??_InitADC 0020  
+                    forwardBackStepByStep@i_79 002A                                 __CFG_PWRTE$OFF 0000  
+               __size_of_forwardBackStepByStep 00C3                  __end_of_forwardBackStepByStep 03FB  
+                      __end_of__initialization 03FD                                togaleLeds@flage 0028  
+                              togaleLeds@count 0029                                     __pbssBANK0 002D  
+                           __size_of_gpio_init 0027                                   ?_GetADCValue 0020  
+                                   __pmaintext 00D0          forwardBackwordLightOneOnlyAndRevese@i 0029  
+                                      _InitADC 0090                           __size_of_my_delay_ms 0015  
+                                      __ptext1 027C                                        __ptext2 00A9  
+                                      __ptext3 0130                                        __ptext4 01CF  
+                                      __ptext5 0338                                        __ptext6 007B  
+                                      __ptext7 00F9                                        __ptext8 0090  
+                            __end_of_gpio_init 00D0                           end_of_initialization 03FD  
+             forwardBackStepByStepReverse@i_84 002A                                     _togaleLeds 027C  
+         __end_of_forwardBackStepByStepReverse 027C          __size_of_forwardBackStepByStepReverse 00AD  
+                 _forwardBackStepByStepReverse 01CF                                    togaleLeds@i 002A  
+                         __size_of_GetADCValue 0037      forwardBackwordLightOneOnlyAndRevese@i_103 002A  
+                           GetADCValue@Channel 0024      forwardBackwordLightOneOnlyAndRevese@flage 0028  
+    forwardBackwordLightOneOnlyAndRevese@count 0027                            start_initialization 03FB  
+                        _forwardBackStepByStep 0338                         forwardBackStepByStep@i 0029  
+                ?_forwardBackStepByStepReverse 0020                                    ?_togaleLeds 0025  
+                                    ___latbits 0000                                  __pcstackBANK0 0020  
+                                     ?_InitADC 0020                                      _delay_val 002D  
+                                    __pswtext1 0001                                      _gpio_init 00A9  
+                       ?_forwardBackStepByStep 0020                                  ??_my_delay_ms 0022  
+                          __size_of_togaleLeds 00BC                 ??_forwardBackStepByStepReverse 0025  
+                                     _GO_nDONE 00F9                                     ?_gpio_init 0020  
+                             __size_of_InitADC 0019                            __end_of_my_delay_ms 0090  
+                                 my_delay_ms@n 0020                                  __size_of_main 0029  
+                                ??_GetADCValue 0022                                   ??_togaleLeds 0026  
+                                  ??_gpio_init 0020                                    _my_delay_ms 007B  
+                           __end_of_togaleLeds 0338                            __end_of_GetADCValue 0130  
+                      ??_forwardBackStepByStep 0025              forwardBackStepByStepReverse@flage 0028  
+            forwardBackStepByStepReverse@count 0027                     forwardBackStepByStep@flage 0027  
+                   forwardBackStepByStep@count 0028                                 InitADC@Channel 0021  
+                            __CFG_FOSC$INTRCIO 0000  

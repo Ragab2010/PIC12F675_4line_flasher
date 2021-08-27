@@ -81,7 +81,7 @@ unsigned short delay_val;
 
 /*****************************************************************************/
 /*****/
-#define CHECKDEF
+//#define CHECKDEF
 /*****/
 /*********************prototype function FOR LED FLASHER **********************/
 void forwardBackStepByStep(unsigned char  flage);

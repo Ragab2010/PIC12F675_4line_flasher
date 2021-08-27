@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=leds_allinmain.X
+PROJECTNAME=leds_allinmainn.X
 
 # Active Configuration
 DEFAULTCONF=default

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production/leds_allinmain.X.production.hex">
+  <executable name="dist/default/production/leds_allinmainn.X.production.hex">
     <memory name="program">
       <units>words</units>
       <length>1024</length>
-      <used>955</used>
-      <free>69</free>
+      <used>905</used>
+      <free>119</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
