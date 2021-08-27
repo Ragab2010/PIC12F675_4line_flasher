@@ -1,0 +1,146 @@
+[p LITE_MODE AUTOSTATIC PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12F675 ]
+[d frameptr 6 ]
+"62 /opt/microchip/xc8/v1.36/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 /opt/microchip/xc8/v1.36/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"6 /opt/microchip/xc8/v1.36/sources/pic/eeprom.c
+[v _eecpymem eecpymem `(v  1 e 1 0 ]
+"39
+[v _memcpyee memcpyee `(v  1 e 1 0 ]
+"116 /home/ragab/MPLABXProjects/leds_allinmain.X/main.c
+[v _main main `(v  1 e 1 0 ]
+"143
+[v _gpio_init gpio_init `(v  1 e 1 0 ]
+"166
+[v _InitADC InitADC `(v  1 e 1 0 ]
+"187
+[v _GetADCValue GetADCValue `(ui  1 e 2 0 ]
+"217
+[v _my_delay_ms my_delay_ms `(v  1 e 1 0 ]
+"225
+[v _forwardBackStepByStep forwardBackStepByStep `(v  1 e 1 0 ]
+"271
+[v _forwardBackStepByStepReverse forwardBackStepByStepReverse `(v  1 e 1 0 ]
+"314
+[v _togaleLeds togaleLeds `(v  1 e 1 0 ]
+"454
+[v _forwardBackwordLightOneOnlyAndRevese forwardBackwordLightOneOnlyAndRevese `(v  1 e 1 0 ]
+"212 /opt/microchip/xc8/v1.36/include/pic12f675.h
+[v _GPIO GPIO `VEuc  1 e 1 @5 ]
+"550
+[v _CMCON CMCON `VEuc  1 e 1 @25 ]
+"608
+[v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
+"627
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
+"779
+[v _TRISIO TRISIO `VEuc  1 e 1 @133 ]
+"1184
+[v _VRCON VRCON `VEuc  1 e 1 @153 ]
+"1355
+[v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
+"1374
+[v _ANSEL ANSEL `VEuc  1 e 1 @159 ]
+"1517
+[v _GO_nDONE GO_nDONE `VEb  1 e 0 @249 ]
+"61 /home/ragab/MPLABXProjects/leds_allinmain.X/main.c
+[v _delay_val delay_val `us  1 e 2 0 ]
+"116
+[v _main main `(v  1 e 1 0 ]
+{
+"136
+} 0
+"314
+[v _togaleLeds togaleLeds `(v  1 e 1 0 ]
+{
+[v togaleLeds@flage flage `uc  1 a 1 wreg ]
+"353
+[v togaleLeds@i_90 i `uc  1 a 1 11 ]
+"324
+[v togaleLeds@i i `uc  1 a 1 10 ]
+"315
+[v togaleLeds@count count `uc  1 a 1 9 ]
+"314
+[v togaleLeds@flage flage `uc  1 a 1 wreg ]
+[v togaleLeds@fristTogaleOrNo fristTogaleOrNo `uc  1 p 1 5 ]
+[v togaleLeds@flage flage `uc  1 a 1 8 ]
+"376
+} 0
+"143
+[v _gpio_init gpio_init `(v  1 e 1 0 ]
+{
+"159
+} 0
+"454
+[v _forwardBackwordLightOneOnlyAndRevese forwardBackwordLightOneOnlyAndRevese `(v  1 e 1 0 ]
+{
+[v forwardBackwordLightOneOnlyAndRevese@flage flage `uc  1 a 1 wreg ]
+"477
+[v forwardBackwordLightOneOnlyAndRevese@i_103 i `uc  1 a 1 10 ]
+"457
+[v forwardBackwordLightOneOnlyAndRevese@i i `uc  1 a 1 9 ]
+"455
+[v forwardBackwordLightOneOnlyAndRevese@count count `uc  1 a 1 7 ]
+"454
+[v forwardBackwordLightOneOnlyAndRevese@flage flage `uc  1 a 1 wreg ]
+[v forwardBackwordLightOneOnlyAndRevese@flage flage `uc  1 a 1 8 ]
+"498
+} 0
+"271
+[v _forwardBackStepByStepReverse forwardBackStepByStepReverse `(v  1 e 1 0 ]
+{
+[v forwardBackStepByStepReverse@flage flage `uc  1 a 1 wreg ]
+"292
+[v forwardBackStepByStepReverse@i_84 i `uc  1 a 1 10 ]
+"274
+[v forwardBackStepByStepReverse@i i `uc  1 a 1 9 ]
+"272
+[v forwardBackStepByStepReverse@count count `uc  1 a 1 7 ]
+"271
+[v forwardBackStepByStepReverse@flage flage `uc  1 a 1 wreg ]
+[v forwardBackStepByStepReverse@flage flage `uc  1 a 1 8 ]
+"313
+} 0
+"225
+[v _forwardBackStepByStep forwardBackStepByStep `(v  1 e 1 0 ]
+{
+[v forwardBackStepByStep@flage flage `uc  1 a 1 wreg ]
+"249
+[v forwardBackStepByStep@i_79 i `uc  1 a 1 10 ]
+"228
+[v forwardBackStepByStep@i i `uc  1 a 1 9 ]
+"226
+[v forwardBackStepByStep@count count `uc  1 a 1 8 ]
+"225
+[v forwardBackStepByStep@flage flage `uc  1 a 1 wreg ]
+[v forwardBackStepByStep@flage flage `uc  1 a 1 7 ]
+"269
+} 0
+"217
+[v _my_delay_ms my_delay_ms `(v  1 e 1 0 ]
+{
+[v my_delay_ms@n n `us  1 p 2 0 ]
+"221
+} 0
+"187
+[v _GetADCValue GetADCValue `(ui  1 e 2 0 ]
+{
+[v GetADCValue@Channel Channel `uc  1 a 1 wreg ]
+[v GetADCValue@Channel Channel `uc  1 a 1 wreg ]
+"189
+[v GetADCValue@Channel Channel `uc  1 a 1 4 ]
+"208
+} 0
+"166
+[v _InitADC InitADC `(v  1 e 1 0 ]
+{
+[v InitADC@Channel Channel `uc  1 a 1 wreg ]
+[v InitADC@Channel Channel `uc  1 a 1 wreg ]
+"168
+[v InitADC@Channel Channel `uc  1 a 1 1 ]
+"175
+} 0

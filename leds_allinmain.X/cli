@@ -1,0 +1,4 @@
+pk2cmd -I -P
+
+pk2cmd -PPIC12F675 -T -A5 -R -J -M -Fleds_allinmain.X.production.hex
+
