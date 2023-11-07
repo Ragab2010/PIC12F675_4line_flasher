@@ -1,2 +1,2 @@
 # PIC12F675_4line_flasher
-4 led flsher with one button and put for flash speed controlling
+4 led flasher with one button and Potentiometer Variable Resistor for flasher speed controlling
